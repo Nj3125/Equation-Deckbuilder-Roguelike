@@ -3,6 +3,25 @@ This project is Group 1's submission for Software Engineering I's final project.
 
 ## Description:
 This project takes the form of an educational video game. It is meant for the 4th-8th grade US schoolchildren demographic,
-and will teach students how to form equations to meet different criteria.
+and will teach students how to form equations to meet different criteria. The goal of the project is to make a game that
+will teach students to think critically about how they would go about forming certain numbers.
 
 ## Team roster:
+
+## Software Requirements Specification:
+
+## Prototype:
+
+## Demo Video:
+
+## Bibliography:
+
+## Original Project Description:
+
+## Project Requirements:
+
+## Use Case Diagram:
+
+## Class Diagram:
+
+## Sequence Diagrams:
