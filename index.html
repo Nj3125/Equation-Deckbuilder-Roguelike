@@ -67,38 +67,13 @@
         <h1>Team PlaceHolder</h1>
     </div>
 
-    <!-- Code for tabs -->
-    <script>
-        function toggleTab(evt, toggleOn) {
-            // removed pressed indicator for tab button
-            const tabButtons = document.getElementsByClassName("tabButton");
-            for (let i = 0; i < tabButtons.length; i++) {
-                tabButtons[i].classList.remove("active");
-            }
-            
-            // make pressed tab button light up
-            evt.currentTarget.classList.add("active");
-
-            // hide tab content for all tabs
-            const tabContent = document.getElementsByClassName("tabContent");
-            for (let i = 0; i < tabContent.length; i++) {
-                tabContent[i].classList.add("d-none");
-            }
-
-            // make pressed tab content visable
-            const toggleOnTab = document.getElementById(toggleOn);
-            toggleOnTab.classList.remove("d-none");
-        }
-    </script>
-
-
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
 
-    <!-- Custom JavaScript-->
-    <script type="text/javascript" src="js/main.js"></script>
+    <!-- JavaScript for buttons -->
+    <script type="text/javascript" src="js/button.js"></script>
 </body>
 </html>
