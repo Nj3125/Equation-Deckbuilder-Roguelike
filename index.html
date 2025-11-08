@@ -13,6 +13,9 @@
 
         <!-- Content of buttons -->
         <link href="css/content.css" rel="stylesheet">
+
+        <!-- Buttons -->
+        <link href="css/button.css" rel="stylesheet">
     </head>
     <body>
         <!-- Header example from https://getbootstrap.com/docs/5.3/examples/headers/ -->
@@ -27,10 +30,10 @@
                 
                 <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 container" style="padding-right: 40px;"> 
 
-                    <button class="btn btn-secondary tabButton active" onclick="toggleTab(event, 'ProjectDescription')">Project Description</button>
-                    <button class="btn btn-secondary tabButton" onclick="toggleTab(event, 'Requirements')">Requirements</button>
+                    <button class="btn tabButton" onclick="toggleTab(event, 'ProjectDescription')">Project Description</button>
+                    <button class="btn tabButton" onclick="toggleTab(event, 'Requirements')">Requirements</button>
                     <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Diagrams
                         </button>
                         <ul class="dropdown-menu">
@@ -40,11 +43,11 @@
                             <button class="btn btn-secondary tabButton dropdown-item" onclick="toggleTab(event, 'SequenceDiagram2')">Sequence Diagram 2</button>
                         </ul>
                     </div>
-                    <button class="btn btn-secondary tabButton" onclick="toggleTab(event, 'SRSv1')">SRSv1</button>
-                    <button class="btn btn-secondary tabButton" onclick="toggleTab(event, 'Prototype')">Prototype</button>
-                    <button class="btn btn-secondary tabButton" onclick="toggleTab(event, 'DemoVideo')">Demo Video</button>
-                    <button class="btn btn-secondary tabButton" onclick="toggleTab(event, 'Resources')">Resources</button>
-                    <button class="btn btn-secondary tabButton" onclick="toggleTab(event, 'Team')">Team</button>
+                    <button class="btn tabButton" onclick="toggleTab(event, 'SRSv1')">SRSv1</button>
+                    <button class="btn tabButton" onclick="toggleTab(event, 'Prototype')">Prototype</button>
+                    <button class="btn tabButton" onclick="toggleTab(event, 'DemoVideo')">Demo Video</button>
+                    <button class="btn tabButton" onclick="toggleTab(event, 'Resources')">Resources</button>
+                    <button class="btn tabButton" onclick="toggleTab(event, 'Team')">Team</button>
                 </ul>
 
             </header> 
