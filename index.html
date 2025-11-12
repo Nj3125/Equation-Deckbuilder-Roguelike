@@ -8,6 +8,7 @@
         <!-- Bootstrap CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 
         <!-- General Style -->
         <link href="css/style.css" rel="stylesheet">
@@ -22,19 +23,15 @@
         <!-- Header example from https://getbootstrap.com/docs/5.3/examples/headers/ -->
         <div id="navbar" class="container-fluid">
             <header class="flex-wrap align-items-center justify-content-center justify-content-md-between py-3 m-0 border-bottom" style="width: 100%;"> 
-                <div class="nav col-12 col-md-auto mb-2 mb-md-0 container p-0" style="float:left">
+                <div class="nav col-md-auto mb-2 mb-md-0 p-0" style="float:left">
                     <a href="/" style="display: inline-block;"> 
                         <img src="images/Logo.png" height="50px" width="50px">
                     </a> 
                 </div>
-                <div class="nav col-12 col-md-auto mb-2 mb-md-0 container p-0" style="float:right">
-                    <div style="display: inline-block;"> 
-                        <img src="images/invisible.png" height="50px" width="50px">
-                    </div> 
-                </div>
                 
-                <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 container gap-2"> 
+                <ul class="nav col-md-auto mb-2 justify-content-center mb-md-0 gap-2" style="flex-wrap: nowrap;"> 
 
+                    <button class="btn fs-4 fw-bold tabButton" onclick="toggleTab(event, 'ProjectDescription')">Project</button>
                     <button class="btn fs-4 fw-bold tabButton" onclick="toggleTab(event, 'ProjectDescription')">Project</button>
                     <button class="btn fs-4 fw-bold tabButton" onclick="toggleTab(event, 'Requirements')">Requirements</button>
                     <div class="dropdown ">
@@ -49,21 +46,34 @@
                         </ul>
                     </div>
                     <button class="btn fs-4 fw-bold tabButton" onclick="toggleTab(event, 'SRSv1')">SRS</button>
+                    <button class="btn fs-4 fw-bold tabButton" onclick="toggleTab(event, 'SRSv1')">SRS</button>
                     <button class="btn fs-4 fw-bold tabButton" onclick="toggleTab(event, 'Prototype')">Prototype</button>
                     <button class="btn fs-4 fw-bold tabButton" onclick="toggleTab(event, 'DemoVideo')">Demo Video</button>
                     <button class="btn fs-4 fw-bold tabButton" onclick="toggleTab(event, 'Resources')">Resources</button>
                     <button class="btn fs-4 fw-bold tabButton" onclick="toggleTab(event, 'Team')">Team</button>
                 </ul>
-            </header> 
+
+                <div class="nav col-md-auto mb-2 mb-md-0 p-0" style="float:right; margin-left: auto;">
+                    <div style="display: inline-block;"> 
+                        <img src="images/invisible.png" height="50px" width="50px">
+                    </div> 
+                </div>
+            </header>
         </div>
 
         <!-- Tab Contents -->
         <!-- Project Background, Motivation, Description, and Specification (Original Description) -->
+        <!-- Project Background, Motivation, Description, and Specification (Original Description) -->
         <div id="ProjectDescription" class="tabContent container">
-            <h1>Description</h1>
-            <h1>Background</h1>
-            <h1>Motivation</h1>
-            <h1>Specification</h1>
+            <section class="mx-auto" style="max-width:900px; padding:2rem 1rem;">
+                <h1 class="mb-3">Project Description</h1>
+                <p class="lead">Equation-Deckbuilder-Roguelike is a web-based roguelike that combines deckbuilding mechanics with algebraic problem-solving. Players build and refine a deck of two card types: numbers and operators. At the start, players' decks contain basic single-digit numbers and fundamental operators such as addition and subtraction. During encounters, players must form valid equations from cards in hand to meet specific requirements. Successful encounters reward players with choices of new cards—larger numbers and more advanced operators. As the game progresses, enemies require strategic deck management and creative equation formation to overcome.</p>
+
+                <hr>
+                
+                <h2 class="mt-4">Background</h2>
+                <p>The Equation-Deckbuilder-Roguelike project was developed to create an engaging and educational game experience for middle school students (grades 6–8). The project blends core algebra skills with the replayability of roguelike games. The game begins simply and gradually introduces concepts such as exponents, prime numbers, and the Fibonacci sequence. This progression helps players consolidate prior knowledge and build new mathematical understanding.</p>
+            </section>
         </div>
         <div id="Requirements" class="tabContent d-none">
             <iframe src="pdfs/Requirements.pdf" class="content"></iframe>
@@ -89,12 +99,15 @@
         <div id="DemoVideo" class="tabContent container d-none">
             <h1>Demo Video PlaceHolder</h1>
             <iframe width="560" height="315" src="https://www.youtube.com/embed/jNQXAC9IVRw?si=8iBcS2Yi57cEmQvn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/jNQXAC9IVRw?si=8iBcS2Yi57cEmQvn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
-        <div id="Resources" class="tabContent container d-none">
+        <div id="Bibliography" class="tabContent container d-none">
             <h1>Resources PlaceHolder</h1>
         </div>
         <!-- Team -->
+        <!-- Team -->
         <div id="Team" class="tabContent container d-none">
+            <h1 style="text-align: center;">Our Team</h1>
             <h1 style="text-align: center;">Our Team</h1>
 
             <!-- Card grid (from https://getbootstrap.com/docs/5.3/components/card/)-->
@@ -116,7 +129,37 @@
                             >
                             
                             <!-- Card Body -->
+                        <div class="card text-center h-100 shadow-sm" style="width: 22rem;">
+                            
+                            <!-- Profile Image -->
+                            <img 
+                                src="images/SennyPFP.jpg" 
+                                alt="Profile picture of Senny Lu"
+                                class="rounded-circle mx-auto mt-3"
+                                style="width: 120px; height: 120px; object-fit: cover; object-position: 0% 20%; border: 3px solid #ddd;"
+                            >
+                            
+                            <!-- Card Body -->
                             <div class="card-body">
+                                <h3 class="card-title mb-2">Senny Lu</h3>
+                                <p class="card-text text-muted">Developer</p>
+                                <p>"Some things are invisible."</p>
+                            </div>
+
+                            <!-- Footer (Email & Links) -->
+                            <div class="card-footer text-start">
+                                <a href="mailto:sennylu101@gmail.com" class="text-decoration-none d-block">
+                                    sennylu101@gmail.com
+                                </a>
+                                <a href="https://github.com/Wixisiz" target="_blank" class="text-decoration-none text-dark fs-4">
+                                    <i class="bi bi-github"></i>
+                                    <span class="fs-5 text-primary me-3">GitHub</span>
+                                </a>
+                                <a href="https://www.linkedin.com/in/sennylu/" target="_blank" 
+                                    class="text-decoration-none fs-4">
+                                    <i class="bi bi-linkedin"></i>
+                                    <span class="fs-5">LinkedIn</span>
+                                </a>
                                 <h3 class="card-title mb-2">Senny Lu</h3>
                                 <p class="card-text text-muted">Developer</p>
                                 <p>"Some things are invisible."</p>
@@ -153,7 +196,37 @@
                             >
                             
                             <!-- Card Body -->
+                        <div class="card text-center h-100 shadow-sm" style="width: 22rem;">
+                            
+                            <!-- Profile Image -->
+                            <img 
+                                src="images/Nick's PFP.jpeg" 
+                                alt="Profile picture of Nicholas Johnson"
+                                class="rounded-circle mx-auto mt-3"
+                                style="width: 120px; height: 120px; object-fit: cover; border: 3px solid #ddd;"
+                            >
+                            
+                            <!-- Card Body -->
                             <div class="card-body">
+                                <h3 class="card-title mb-2">Nicholas Johnson</h3>
+                                <p class="card-text text-muted">Writer | Developer | Artist</p>
+                                <p>"Combining education with fun is probably the most important aspect of this project"</p>
+                            </div>
+
+                            <!-- Footer (Email & Links) -->
+                            <div class="card-footer text-start">
+                                <a href="mailto:nicholasjohnson3125@student.uml.edu" class="text-decoration-none d-block">
+                                    nicholasjohnson3125@student.uml.edu
+                                </a>
+                                <a href="https://github.com/Nj3125" target="_blank" class="text-decoration-none text-dark fs-4">
+                                    <i class="bi bi-github"></i>
+                                    <span class="fs-5 text-primary me-3">GitHub</span>
+                                </a>
+                                <a href="https://www.linkedin.com/in/nicholas-johnson-3012a3396/" target="_blank" 
+                                    class="text-decoration-none fs-4">
+                                    <i class="bi bi-linkedin"></i>
+                                    <span class="fs-5">LinkedIn</span>
+                                </a>
                                 <h3 class="card-title mb-2">Nicholas Johnson</h3>
                                 <p class="card-text text-muted">Writer | Developer | Artist</p>
                                 <p>"Combining education with fun is probably the most important aspect of this project"</p>
@@ -192,20 +265,20 @@
                             <!-- Card Body -->
                             <div class="card-body">
                                 <h3 class="card-title mb-2">Phyo Naing</h3>
-                                <p class="card-text text-muted">Role 1 | Role 2 | Role 3</p>
-                                <p>"Some sort of quote"</p>
+                                <p class="card-text text-muted">Developer</p>
+                                <p>"no quote from me man"</p>
                             </div>
 
                             <!-- Footer (Email & Links) -->
                             <div class="card-footer text-start">
                                 <a href="mailto:another@email.com" class="text-decoration-none d-block">
-                                    another@email.com
+                                    Phyo_naing@student.uml.edu
                                 </a>
                                 <a href="https://github.com/Phykio" target="_blank" class="text-decoration-none text-dark fs-4">
                                     <i class="bi bi-github"></i>
                                     <span class="fs-5 text-primary me-3">GitHub</span>
                                 </a>
-                                <a href="https://www.linkedin.com" target="_blank" 
+                                <a href="https://www.linkedin.com/in/phyo-naing/" target="_blank" 
                                     class="text-decoration-none fs-4">
                                     <i class="bi bi-linkedin"></i>
                                     <span class="fs-5">LinkedIn</span>
@@ -235,7 +308,7 @@
 
                             <!-- Footer (Email & Links) -->
                             <div class="card-footer text-start">
-                                <a href="mailto:Orion_Golden@student.uml.edu" class="text-decoration-none d-block">
+                                <a href="mailto:another@email.com" class="text-decoration-none d-block">
                                     Orion_Golden@student.uml.edu
                                 </a>
                                 <a href="https://github.com/Orion474" target="_blank" class="text-decoration-none text-dark fs-4">
@@ -285,6 +358,38 @@
                                     <span class="fs-5">LinkedIn</span>
                                 </a>
                             </div>
+                        <div class="card text-center h-100 shadow-sm" style="width: 22rem;">
+                            
+                            <!-- Profile Image -->
+                            <img 
+                                src="images/Default PFP.webp" 
+                                alt="Profile picture of {insert name here}"
+                                class="rounded-circle mx-auto mt-3"
+                                style="width: 120px; height: 120px; object-fit: cover; border: 3px solid #ddd;"
+                            >
+                            
+                            <!-- Card Body -->
+                            <div class="card-body">
+                                <h3 class="card-title mb-2">Angel Chikumbirike</h3>
+                                <p class="card-text text-muted">Role 1 | Role 2 | Role 3</p>
+                                <p>"Some sort of quote"</p>
+                            </div>
+
+                            <!-- Footer (Email & Links) -->
+                            <div class="card-footer text-start">
+                                <a href="mailto:another@email.com" class="text-decoration-none d-block">
+                                    another@email.com
+                                </a>
+                                <a href="https://github.com/AngelChikumbirike" target="_blank" class="text-decoration-none text-dark fs-4">
+                                    <i class="bi bi-github"></i>
+                                    <span class="fs-5 text-primary me-3">GitHub</span>
+                                </a>
+                                <a href="https://www.linkedin.com/in/vimbikai-a-chikumbirike/" target="_blank" 
+                                    class="text-decoration-none fs-4">
+                                    <i class="bi bi-linkedin"></i>
+                                    <span class="fs-5">LinkedIn</span>
+                                </a>
+                            </div>
                         </div>
                     </div>
 
@@ -294,7 +399,7 @@
                             
                             <!-- Profile Image -->
                             <img 
-                                src="images/Abhiram's PFP.webp" 
+                                src="images/AbiPFP.JPG" 
                                 alt="Profile picture of {insert name here}"
                                 class="rounded-circle mx-auto mt-3"
                                 style="width: 120px; height: 120px; object-fit: cover; border: 3px solid #ddd;"
@@ -303,14 +408,14 @@
                             <!-- Card Body -->
                             <div class="card-body">
                                 <h3 class="card-title mb-2">Abhiram Garre</h3>
-                                <p class="card-text text-muted">Developer | Quality Assurance</p>
-                                <p>"If at first you don't succeed, try, try again"</p>
+                                <p class="card-text text-muted">Developer</p>
+                                <p>"Some sort of quote"</p>
                             </div>
 
                             <!-- Footer (Email & Links) -->
                             <div class="card-footer text-start">
-                                <a href="mailto:GarreAbhiram@gmail.com" class="text-decoration-none d-block">
-                                    GarreAbhiram@gmail.com
+                                <a href="mailto:another@email.com" class="text-decoration-none d-block">
+                                    another@email.com
                                 </a>
                                 <a href="https://github.com/AbhiramGarre" target="_blank" class="text-decoration-none text-dark fs-4">
                                     <i class="bi bi-github"></i>
