@@ -1,3 +1,37 @@
-[gd_scene format=3 uid="uid://dglawfnyh8nhw"]
+[gd_scene load_steps=2 format=3 uid="uid://dglawfnyh8nhw"]
 
-[node name="Node2D" type="Node2D"]
+[ext_resource type="Script" uid="uid://t3jnjagjb8md" path="res://MainMenu.cs" id="1_i26rj"]
+
+[node name="Main Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_i26rj")
+
+[node name="Button Manager" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Play" type="Button" parent="Button Manager"]
+layout_mode = 0
+offset_left = 393.0
+offset_top = 321.0
+offset_right = 755.0
+offset_bottom = 367.0
+text = "Play"
+
+[node name="Settings" type="Button" parent="Button Manager"]
+layout_mode = 0
+offset_left = 393.0
+offset_top = 387.0
+offset_right = 756.0
+offset_bottom = 440.0
+text = "Settings"
+
+[node name="Quit" type="Button" parent="Button Manager"]
+layout_mode = 0
+offset_left = 391.0
+offset_top = 460.0
+offset_right = 756.0
+offset_bottom = 517.0
+text = "Quit"
