@@ -2,7 +2,7 @@
 This project is Group 1's submission for Software Engineering I's final project. (add more background and motivation)
 
 ## Description:
-This project takes the form of an educational video game. It is meant for the 6th-8th grade US schoolchildren demographic,
+This project takes the form of an educational video game. It is meant for the 6th-grade to 8th-grade US schoolchildren demographic,
 and will teach students how to form equations to meet different criteria. The goal of the project is to make a game that
 will teach students to think critically about how they would go about forming certain numbers.
 
@@ -11,6 +11,7 @@ will teach students to think critically about how they would go about forming ce
 ## Software Requirements Specification:
 
 ## Prototype:
+Our prototype has a main menu and a settings menu. The settings menu has an option to adjust the volume.
 
 ## Demo Video:
 
