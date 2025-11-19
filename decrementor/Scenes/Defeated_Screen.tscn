@@ -1,0 +1,119 @@
+[gd_scene load_steps=9 format=3 uid="uid://cemtg7kt8t8fi"]
+
+[ext_resource type="Script" uid="uid://c4f5rwak3llo0" path="res://Scripts/died_menu.gd" id="1_1qw6l"]
+[ext_resource type="FontFile" uid="uid://dwspfum8vw6ln" path="res://Assets/Fonts/GrapeSoda.ttf" id="1_ctwwu"]
+[ext_resource type="Script" uid="uid://k330kocyunkm" path="res://Scripts/player_name.gd" id="2_rb4mm"]
+[ext_resource type="Script" uid="uid://cnhn8vbxr3t0o" path="res://Scripts/back_button.gd" id="3_pl21w"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pl21w"]
+bg_color = Color(0.68344665, 0.43377468, 0.1325399, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 60
+corner_radius_top_right = 60
+corner_radius_bottom_right = 60
+corner_radius_bottom_left = 60
+shadow_color = Color(0.41073012, 0.21138301, 2.4065375e-07, 0.6)
+shadow_size = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_rb4mm"]
+font = ExtResource("1_ctwwu")
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_1qw6l"]
+font = ExtResource("1_ctwwu")
+font_size = 96
+
+[sub_resource type="LabelSettings" id="LabelSettings_ctwwu"]
+font = ExtResource("1_ctwwu")
+font_size = 64
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_1qw6l")
+
+[node name="PlayerName" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_rb4mm")
+
+[node name="PanelContainer" type="PanelContainer" parent="PlayerName"]
+layout_mode = 0
+offset_left = 204.0
+offset_top = 267.0
+offset_right = 978.0
+offset_bottom = 494.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_pl21w")
+
+[node name="name" type="Label" parent="PlayerName"]
+layout_mode = 0
+offset_left = 296.0
+offset_top = 310.0
+offset_right = 484.0
+offset_bottom = 374.0
+text = "Name : "
+label_settings = SubResource("LabelSettings_rb4mm")
+
+[node name="LineEdit" type="LineEdit" parent="PlayerName"]
+layout_mode = 0
+offset_left = 488.0
+offset_top = 312.0
+offset_right = 896.0
+offset_bottom = 382.0
+
+[node name="Submit" type="Button" parent="PlayerName"]
+layout_mode = 0
+offset_left = 476.0
+offset_top = 407.0
+offset_right = 646.0
+offset_bottom = 458.0
+theme_override_fonts/font = ExtResource("1_ctwwu")
+theme_override_font_sizes/font_size = 32
+text = "Submit"
+autowrap_mode = 3
+autowrap_trim_flags = 0
+
+[node name="Score" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Score"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 334.0
+offset_right = 778.0
+offset_bottom = 96.0
+grow_horizontal = 2
+text = "U Died bozo"
+label_settings = SubResource("LabelSettings_1qw6l")
+
+[node name="Label2" type="Label" parent="Score"]
+layout_mode = 0
+offset_left = 337.0
+offset_top = 154.0
+offset_right = 833.0
+offset_bottom = 218.0
+text = "Score : "
+label_settings = SubResource("LabelSettings_ctwwu")
+
+[node name="Button" type="Button" parent="Score"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 569.0
+offset_right = 160.0
+offset_bottom = 631.0
+theme_override_fonts/font = ExtResource("1_ctwwu")
+theme_override_font_sizes/font_size = 32
+text = "Back"
+script = ExtResource("3_pl21w")
+
+[connection signal="pressed" from="PlayerName/Submit" to="PlayerName" method="_on_submit_pressed"]
+[connection signal="pressed" from="Score/Button" to="Score/Button" method="_on_pressed_defeat"]

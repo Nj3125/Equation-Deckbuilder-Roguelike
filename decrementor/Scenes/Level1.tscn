@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://nk7db4ecd6wr"]
+[gd_scene load_steps=8 format=3 uid="uid://nk7db4ecd6wr"]
 
 [ext_resource type="Script" uid="uid://blff3bg4ahv26" path="res://Scripts/pause_menu.gd" id="1_q12u6"]
 [ext_resource type="FontFile" uid="uid://dwspfum8vw6ln" path="res://Assets/Fonts/GrapeSoda.ttf" id="2_joc8x"]
+[ext_resource type="Script" uid="uid://watu76vudatv" path="res://Scripts/placeholder_died.gd" id="3_joc8x"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q12u6"]
 
@@ -81,6 +82,17 @@ theme_override_styles/background = SubResource("StyleBoxFlat_joc8x")
 theme_override_styles/fill = SubResource("StyleBoxFlat_jghel")
 value = 100.0
 show_percentage = false
+
+[node name="Died_placeholder" type="Button" parent="UI (CanvasLayer)/UI (Panel)"]
+layout_mode = 0
+offset_left = 945.0
+offset_top = 598.0
+offset_right = 1149.0
+offset_bottom = 636.0
+theme_override_fonts/font = ExtResource("2_joc8x")
+theme_override_font_sizes/font_size = 12
+text = "U Died (placeholder cuz no functionality)"
+script = ExtResource("3_joc8x")
 
 [node name="Pause Menu" type="Control" parent="UI (CanvasLayer)"]
 process_mode = 3
@@ -197,3 +209,17 @@ offset_bottom = 81.0
 theme_override_fonts/font = ExtResource("2_joc8x")
 theme_override_font_sizes/font_size = 53
 text = "<<<"
+
+[node name="User" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="User"]
+
+[node name="Enemy" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemy"]
+
+[node name="ProgressBar" type="ProgressBar" parent="Enemy"]
+offset_right = 4.0
+offset_bottom = 27.0
+
+[connection signal="pressed" from="UI (CanvasLayer)/UI (Panel)/Died_placeholder" to="UI (CanvasLayer)/UI (Panel)/Died_placeholder" method="_on_pressed"]

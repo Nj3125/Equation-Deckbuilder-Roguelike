@@ -15,9 +15,18 @@ run/main_scene="res://Scenes/MainMenu.tscn"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Global="*res://Global.gd"
+SilentWolf="*res://addons/silent_wolf/SilentWolf.gd"
+
 [dotnet]
 
 project/assembly_name="Decrementor"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/silent_wolf/plugin.cfg")
 
 [input]
 
