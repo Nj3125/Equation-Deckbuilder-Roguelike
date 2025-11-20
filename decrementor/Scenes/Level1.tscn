@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://nk7db4ecd6wr"]
+[gd_scene load_steps=13 format=3 uid="uid://nk7db4ecd6wr"]
 
 [ext_resource type="Script" uid="uid://blff3bg4ahv26" path="res://Scripts/pause_menu.gd" id="1_q12u6"]
 [ext_resource type="FontFile" uid="uid://dwspfum8vw6ln" path="res://Assets/Fonts/GrapeSoda.ttf" id="2_joc8x"]
 [ext_resource type="Script" uid="uid://watu76vudatv" path="res://Scripts/placeholder_died.gd" id="3_joc8x"]
 [ext_resource type="Texture2D" uid="uid://bo8eckos4du3f" path="res://Assets/User.png" id="4_slnnj"]
-[ext_resource type="Texture2D" uid="uid://c4f6c7y1d0yac" path="res://Assets/Enemy.png" id="5_t3or0"]
+[ext_resource type="Texture2D" uid="uid://buqg0rddx5koj" path="res://Assets/Enemy.png" id="5_t3or0"]
+[ext_resource type="PackedScene" uid="uid://dp6f81cj1ttt6" path="res://Scenes/card.tscn" id="6_t3or0"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q12u6"]
 
@@ -44,9 +45,12 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_q12u6")
 
 [node name="ColorRect" type="ColorRect" parent="UI (CanvasLayer)/UI (Panel)"]
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 648.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0, 0, 0, 0.20784314)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI (CanvasLayer)/UI (Panel)"]
@@ -229,30 +233,72 @@ theme_override_fonts/font = ExtResource("2_joc8x")
 theme_override_font_sizes/font_size = 53
 text = "<<<"
 
+[node name="Button" type="Button" parent="UI (CanvasLayer)"]
+offset_left = 762.0
+offset_top = 336.0
+offset_right = 904.0
+offset_bottom = 414.0
+theme_override_fonts/font = ExtResource("2_joc8x")
+theme_override_font_sizes/font_size = 32
+text = "Equate
+"
+
 [node name="User" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="User"]
-position = Vector2(281, 238)
-scale = Vector2(4, 4)
+position = Vector2(265, 197)
+scale = Vector2(3, 3)
 texture = ExtResource("4_slnnj")
 
 [node name="Enemy" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Enemy"]
-position = Vector2(958, 239)
-scale = Vector2(4, 4)
+position = Vector2(957, 196.00002)
+scale = Vector2(3, 3)
 texture = ExtResource("5_t3or0")
 
 [node name="ProgressBar" type="ProgressBar" parent="Enemy"]
 clip_contents = true
-offset_left = 822.0
-offset_top = 358.0
-offset_right = 1100.0
-offset_bottom = 385.0
+offset_left = 823.0
+offset_top = 278.0
+offset_right = 1101.0
+offset_bottom = 305.0
 theme_override_styles/background = SubResource("StyleBoxFlat_slnnj")
 theme_override_styles/fill = SubResource("StyleBoxFlat_t3or0")
 step = 1.0
 value = 100.0
 rounded = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 211.0
+offset_top = 312.0
+offset_right = 729.0
+offset_bottom = 445.0
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 27.0
+offset_right = 459.0
+offset_bottom = 84.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_joc8x")
+theme_override_font_sizes/font_size = 32
+text = "EQUATION AREA PLACEHOLDER"
+
+[node name="Card" parent="." instance=ExtResource("6_t3or0")]
+position = Vector2(579, 568)
+
+[node name="Label" type="Label" parent="Card"]
+offset_left = -452.0
+offset_top = -169.0
+offset_right = -379.0
+offset_bottom = -132.0
+theme_override_fonts/font = ExtResource("2_joc8x")
+theme_override_font_sizes/font_size = 30
+text = "Deck"
+
+[node name="Deck" parent="." instance=ExtResource("6_t3or0")]
+position = Vector2(145, 514)
 
 [connection signal="pressed" from="UI (CanvasLayer)/UI (Panel)/Died_placeholder" to="UI (CanvasLayer)/UI (Panel)/Died_placeholder" method="_on_pressed"]

@@ -23,22 +23,24 @@ shadow_size = 10
 font = ExtResource("1_ctwwu")
 font_size = 64
 
-[sub_resource type="LabelSettings" id="LabelSettings_1qw6l"]
-font = ExtResource("1_ctwwu")
-font_size = 96
-
 [sub_resource type="LabelSettings" id="LabelSettings_ctwwu"]
 font = ExtResource("1_ctwwu")
 font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_1qw6l"]
+font = ExtResource("1_ctwwu")
+font_size = 96
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_1qw6l")
 
 [node name="PlayerName" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("2_rb4mm")
 
 [node name="PanelContainer" type="PanelContainer" parent="PlayerName"]
@@ -79,21 +81,12 @@ autowrap_trim_flags = 0
 
 [node name="Score" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Label" type="Label" parent="Score"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 334.0
-offset_right = 778.0
-offset_bottom = 96.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
-text = "U Died bozo"
-label_settings = SubResource("LabelSettings_1qw6l")
+grow_vertical = 2
+size_flags_vertical = 0
 
 [node name="Label2" type="Label" parent="Score"]
 layout_mode = 0
@@ -114,6 +107,18 @@ theme_override_fonts/font = ExtResource("1_ctwwu")
 theme_override_font_sizes/font_size = 32
 text = "Back"
 script = ExtResource("3_pl21w")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 334.0
+offset_right = 778.0
+offset_bottom = 96.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+text = "U Died bozo"
+label_settings = SubResource("LabelSettings_1qw6l")
 
 [connection signal="pressed" from="PlayerName/Submit" to="PlayerName" method="_on_submit_pressed"]
 [connection signal="pressed" from="Score/Button" to="Score/Button" method="_on_pressed_defeat"]
