@@ -122,6 +122,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI (CanvasLayer)/Hand"]
 layout_mode = 1
