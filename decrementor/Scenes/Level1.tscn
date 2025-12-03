@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://nk7db4ecd6wr"]
+[gd_scene load_steps=17 format=3 uid="uid://nk7db4ecd6wr"]
 
 [ext_resource type="Script" uid="uid://blff3bg4ahv26" path="res://Scripts/pause_menu.gd" id="1_q12u6"]
 [ext_resource type="FontFile" uid="uid://dwspfum8vw6ln" path="res://Assets/Fonts/GrapeSoda.ttf" id="2_joc8x"]
 [ext_resource type="Script" uid="uid://watu76vudatv" path="res://Scripts/placeholder_died.gd" id="3_joc8x"]
+[ext_resource type="Texture2D" uid="uid://46yjt36vrei5" path="res://Assets/Hand.png" id="4_bdlbp"]
 [ext_resource type="PackedScene" uid="uid://bobspb6dd8x0s" path="res://Scenes/card_front_binop.tscn" id="4_kylad"]
 [ext_resource type="Texture2D" uid="uid://bo8eckos4du3f" path="res://Assets/Images/User.png" id="4_slnnj"]
 [ext_resource type="PackedScene" uid="uid://d1du86ld34le1" path="res://Scenes/card_front_num.tscn" id="5_6ll4n"]
@@ -237,6 +238,11 @@ offset_left = 88.0
 offset_top = 453.0
 offset_right = 896.0
 offset_bottom = 644.0
+
+[node name="Hand" type="Sprite2D" parent="UI (CanvasLayer)/Hand (HBoxContainer)"]
+position = Vector2(403, 92)
+scale = Vector2(2, 2)
+texture = ExtResource("4_bdlbp")
 
 [node name="Card7" parent="UI (CanvasLayer)/Hand (HBoxContainer)" instance=ExtResource("4_kylad")]
 position = Vector2(472, 97)
