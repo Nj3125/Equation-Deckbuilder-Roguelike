@@ -378,45 +378,4 @@ step = 1.0
 value = 100.0
 rounded = true
 
-[node name="EquationArea (HBoxContainer)" type="HBoxContainer" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="EquationArea" parent="EquationArea (HBoxContainer)" instance=ExtResource("6_6ll4n")]
-script = ExtResource("7_kylad")
-
-[node name="HandArea (HBoxContainer)" type="HBoxContainer" parent="."]
-offset_bottom = 40.0
-
-[node name="HandArea" parent="HandArea (HBoxContainer)" instance=ExtResource("9_2h8qs")]
-
-[node name="CardManager" type="Node2D" parent="."]
-position = Vector2(3, 0)
-script = ExtResource("4_ysn8j")
-
-[node name="Deck (VBoxContainer)" type="VBoxContainer" parent="."]
-offset_left = 1033.0
-offset_top = 369.0
-offset_right = 1086.0
-offset_bottom = 409.0
-
-[node name="Card" parent="Deck (VBoxContainer)" instance=ExtResource("6_t3or0")]
-position = Vector2(54, 131)
-
-[node name="Card2" parent="Deck (VBoxContainer)" instance=ExtResource("6_t3or0")]
-position = Vector2(41, 142)
-
-[node name="Card3" parent="Deck (VBoxContainer)" instance=ExtResource("6_t3or0")]
-position = Vector2(29, 154)
-
-[node name="Card4" parent="Deck (VBoxContainer)" instance=ExtResource("6_t3or0")]
-position = Vector2(16, 168)
-
-[node name="Label" type="Label" parent="Deck (VBoxContainer)"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_joc8x")
-theme_override_font_sizes/font_size = 30
-text = "Deck"
-horizontal_alignment = 1
-
 [connection signal="pressed" from="UI (CanvasLayer)/UI (Panel)/Died_placeholder" to="UI (CanvasLayer)/UI (Panel)/Died_placeholder" method="_on_pressed"]
