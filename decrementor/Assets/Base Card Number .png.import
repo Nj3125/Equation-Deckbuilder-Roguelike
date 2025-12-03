@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bs2yuyjqhbpdf"
-path="res://.godot/imported/Card_hover.png-c46b6b7c542c049b7b1e22baa0b95263.ctex"
+uid="uid://cfytbfp1pr7em"
+path="res://.godot/imported/Base Card Number .png-147776cf17e0c30bcea9af7b30f1ef6d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/Card_hover.png"
-dest_files=["res://.godot/imported/Card_hover.png-c46b6b7c542c049b7b1e22baa0b95263.ctex"]
+source_file="res://Assets/Base Card Number .png"
+dest_files=["res://.godot/imported/Base Card Number .png-147776cf17e0c30bcea9af7b30f1ef6d.ctex"]
 
 [params]
 

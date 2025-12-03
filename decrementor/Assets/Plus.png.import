@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bs2yuyjqhbpdf"
-path="res://.godot/imported/Card_hover.png-c46b6b7c542c049b7b1e22baa0b95263.ctex"
+uid="uid://bx5numyf52f0k"
+path="res://.godot/imported/Plus.png-8fc444658b92dc3425d5609b3e9907b9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/Card_hover.png"
-dest_files=["res://.godot/imported/Card_hover.png-c46b6b7c542c049b7b1e22baa0b95263.ctex"]
+source_file="res://Assets/Plus.png"
+dest_files=["res://.godot/imported/Plus.png-8fc444658b92dc3425d5609b3e9907b9.ctex"]
 
 [params]
 
