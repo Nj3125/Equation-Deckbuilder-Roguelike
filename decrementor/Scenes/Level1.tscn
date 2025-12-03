@@ -22,11 +22,13 @@
 [ext_resource type="Texture2D" uid="uid://bo8eckos4du3f" path="res://Assets/User.png" id="4_slnnj"]
 [ext_resource type="Script" uid="uid://cb8yi27uj3rbi" path="res://Scenes/card_manager.gd" id="4_ysn8j"]
 [ext_resource type="Texture2D" uid="uid://buqg0rddx5koj" path="res://Assets/Enemy.png" id="5_t3or0"]
-[ext_resource type="PackedScene" uid="uid://dq2q8j8fww1ky" path="res://Scenes/equation_area.tscn" id="6_6ll4n"]
 [ext_resource type="PackedScene" uid="uid://dp6f81cj1ttt6" path="res://Scenes/card.tscn" id="6_t3or0"]
+<<<<<<< HEAD
 [ext_resource type="Script" uid="uid://4dxdcqq4odg0" path="res://Scenes/equation_area.gd" id="7_kylad"]
 [ext_resource type="PackedScene" uid="uid://cuwcnbr7yu3mb" path="res://Scenes/hand_area.tscn" id="9_2h8qs"]
 >>>>>>> parent of 728278b (Merge branch 'main' of https://github.com/Nj3125/Equation-Deckbuilder-Roguelike)
+=======
+>>>>>>> parent of 5df6ee7 (added dragging cards to and from equation area)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q12u6"]
 
