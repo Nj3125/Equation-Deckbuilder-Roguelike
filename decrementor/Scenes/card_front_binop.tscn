@@ -1,0 +1,67 @@
+[gd_scene load_steps=11 format=3 uid="uid://bobspb6dd8x0s"]
+
+[ext_resource type="Texture2D" uid="uid://cc22aac0v3c5o" path="res://Assets/Base Card.png" id="1_0qrk5"]
+[ext_resource type="Texture2D" uid="uid://ckx82dd22o0h" path="res://Assets/Hovered.png" id="4_ly81g"]
+[ext_resource type="Script" uid="uid://872wi8f1dlgq" path="res://Scenes/hover_sprite.gd" id="5_ih2rx"]
+[ext_resource type="Texture2D" uid="uid://6347ox8dhx46" path="res://Assets/Base Operator-export.png" id="6_e1q66"]
+[ext_resource type="Texture2D" uid="uid://bx5numyf52f0k" path="res://Assets/Plus.png" id="7_43php"]
+[ext_resource type="Texture2D" uid="uid://i52q633pqcad" path="res://Assets/Multiplication.png" id="8_ci0c5"]
+[ext_resource type="Texture2D" uid="uid://b0lcmgb17xfft" path="res://Assets/Division.png" id="9_k6ahx"]
+[ext_resource type="Texture2D" uid="uid://cp4uishqklnoa" path="res://Assets/Minus-export.png" id="10_aqja0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yvxpl"]
+size = Vector2(64, 93)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_uf1hq"]
+load_path = "res://.godot/imported/Hovered.png-2466167cdfadff2f06151dd7c985a20e.ctex"
+
+[node name="Card_front_binop" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_yvxpl")
+
+[node name="BaseOpCard" type="Sprite2D" parent="Area2D/CollisionShape2D"]
+texture = ExtResource("1_0qrk5")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D/CollisionShape2D/BaseOpCard"]
+texture = ExtResource("6_e1q66")
+
+[node name="Plus" type="Sprite2D" parent="Area2D/CollisionShape2D/BaseOpCard"]
+visible = false
+position = Vector2(1, 0)
+texture = ExtResource("7_43php")
+
+[node name="Multi" type="Sprite2D" parent="Area2D/CollisionShape2D/BaseOpCard"]
+position = Vector2(1, 0)
+texture = ExtResource("8_ci0c5")
+
+[node name="Div" type="Sprite2D" parent="Area2D/CollisionShape2D/BaseOpCard"]
+visible = false
+position = Vector2(1, 0)
+texture = ExtResource("9_k6ahx")
+
+[node name="Minus" type="Sprite2D" parent="Area2D/CollisionShape2D/BaseOpCard"]
+visible = false
+position = Vector2(1, 0)
+texture = ExtResource("10_aqja0")
+
+[node name="HoverEffect" type="Sprite2D" parent="Area2D/CollisionShape2D/BaseOpCard"]
+visible = false
+texture = SubResource("CompressedTexture2D_uf1hq")
+
+[node name="HoverSprite" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.72156864)
+scale = Vector2(2, 2)
+texture = ExtResource("4_ly81g")
+script = ExtResource("5_ih2rx")
+
+[connection signal="mouse_entered" from="." to="HoverSprite" method="_on_card_mouse_entered"]
+[connection signal="mouse_exited" from="." to="HoverSprite" method="_on_card_mouse_exited"]
+[connection signal="mouse_entered" from="Area2D" to="HoverSprite" method="_on_card_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="HoverSprite" method="_on_card_mouse_exited"]
