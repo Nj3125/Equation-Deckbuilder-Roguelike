@@ -1,12 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://nk7db4ecd6wr"]
+[gd_scene load_steps=16 format=3 uid="uid://nk7db4ecd6wr"]
 
 [ext_resource type="Script" uid="uid://blff3bg4ahv26" path="res://Scripts/pause_menu.gd" id="1_q12u6"]
 [ext_resource type="FontFile" uid="uid://dwspfum8vw6ln" path="res://Assets/Fonts/GrapeSoda.ttf" id="2_joc8x"]
 [ext_resource type="Script" uid="uid://watu76vudatv" path="res://Scripts/placeholder_died.gd" id="3_joc8x"]
+[ext_resource type="PackedScene" uid="uid://bobspb6dd8x0s" path="res://Scenes/card_front_binop.tscn" id="4_kylad"]
 [ext_resource type="Texture2D" uid="uid://bo8eckos4du3f" path="res://Assets/Images/User.png" id="4_slnnj"]
+[ext_resource type="PackedScene" uid="uid://d1du86ld34le1" path="res://Scenes/card_front_num.tscn" id="5_6ll4n"]
 [ext_resource type="Texture2D" uid="uid://buqg0rddx5koj" path="res://Assets/Images/Enemy.png" id="5_t3or0"]
 [ext_resource type="Script" uid="uid://cn0evpoljb0p4" path="res://Scenes/CombatManager.gd" id="5_ysn8j"]
-[ext_resource type="PackedScene" uid="uid://dp6f81cj1ttt6" path="res://Scenes/card.tscn" id="6_t3or0"]
+[ext_resource type="PackedScene" uid="uid://dp6f81cj1ttt6" path="res://Scenes/card_back.tscn" id="6_t3or0"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q12u6"]
 
@@ -233,26 +235,26 @@ text = "<<<"
 [node name="Hand (HBoxContainer)" type="HBoxContainer" parent="UI (CanvasLayer)"]
 offset_left = 88.0
 offset_top = 453.0
-offset_right = 891.0
+offset_right = 896.0
 offset_bottom = 644.0
 
-[node name="Card8" parent="UI (CanvasLayer)/Hand (HBoxContainer)" instance=ExtResource("6_t3or0")]
-position = Vector2(607, 97)
-
-[node name="Card7" parent="UI (CanvasLayer)/Hand (HBoxContainer)" instance=ExtResource("6_t3or0")]
+[node name="Card7" parent="UI (CanvasLayer)/Hand (HBoxContainer)" instance=ExtResource("4_kylad")]
 position = Vector2(472, 97)
 
-[node name="Card4" parent="UI (CanvasLayer)/Hand (HBoxContainer)" instance=ExtResource("6_t3or0")]
-position = Vector2(64, 96)
+[node name="Card8" parent="UI (CanvasLayer)/Hand (HBoxContainer)" instance=ExtResource("5_6ll4n")]
+position = Vector2(607, 97)
 
-[node name="Card5" parent="UI (CanvasLayer)/Hand (HBoxContainer)" instance=ExtResource("6_t3or0")]
+[node name="Card4" parent="UI (CanvasLayer)/Hand (HBoxContainer)" instance=ExtResource("5_6ll4n")]
+position = Vector2(66, 96)
+
+[node name="Card5" parent="UI (CanvasLayer)/Hand (HBoxContainer)" instance=ExtResource("5_6ll4n")]
 position = Vector2(201, 96)
 
-[node name="Card6" parent="UI (CanvasLayer)/Hand (HBoxContainer)" instance=ExtResource("6_t3or0")]
-position = Vector2(336, 97)
+[node name="Card6" parent="UI (CanvasLayer)/Hand (HBoxContainer)" instance=ExtResource("4_kylad")]
+position = Vector2(336, 96)
 
-[node name="Card9" parent="UI (CanvasLayer)/Hand (HBoxContainer)" instance=ExtResource("6_t3or0")]
-position = Vector2(742, 97)
+[node name="Card9" parent="UI (CanvasLayer)/Hand (HBoxContainer)" instance=ExtResource("4_kylad")]
+position = Vector2(741, 97)
 
 [node name="Deck (VBoxContainer)" type="VBoxContainer" parent="UI (CanvasLayer)"]
 offset_left = 1033.0
@@ -293,9 +295,9 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Attack_Button" type="Button" parent="UI (CanvasLayer)/CombatManager (Node)"]
-offset_left = 762.0
+offset_left = 761.0
 offset_top = 336.0
-offset_right = 904.0
+offset_right = 903.0
 offset_bottom = 414.0
 theme_override_fonts/font = ExtResource("2_joc8x")
 theme_override_font_sizes/font_size = 32

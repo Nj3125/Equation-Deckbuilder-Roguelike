@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://d1du86ld34le1"]
+
+[ext_resource type="Texture2D" uid="uid://ckx82dd22o0h" path="res://Assets/Hovered.png" id="2_gkct0"]
+[ext_resource type="Script" uid="uid://872wi8f1dlgq" path="res://Scenes/hover_sprite.gd" id="3_1s7ae"]
+[ext_resource type="Texture2D" uid="uid://cc22aac0v3c5o" path="res://Assets/Base Card.png" id="4_wk1b5"]
+[ext_resource type="Texture2D" uid="uid://cfytbfp1pr7em" path="res://Assets/Base Card Number .png" id="5_od4am"]
+[ext_resource type="FontFile" uid="uid://dwspfum8vw6ln" path="res://Assets/Fonts/GrapeSoda.ttf" id="6_56ymg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yvxpl"]
+size = Vector2(64, 93)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ot2lt"]
+font = ExtResource("6_56ymg")
+font_size = 25
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_uf1hq"]
+load_path = "res://.godot/imported/Hovered.png-2466167cdfadff2f06151dd7c985a20e.ctex"
+
+[node name="Card_front_num" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_yvxpl")
+
+[node name="BaseNumCard" type="Sprite2D" parent="CollisionShape2D"]
+texture = ExtResource("4_wk1b5")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D/BaseNumCard"]
+texture = ExtResource("5_od4am")
+
+[node name="Label" type="Label" parent="CollisionShape2D/BaseNumCard"]
+offset_left = -12.0
+offset_top = -13.0
+offset_right = 12.0
+offset_bottom = 13.0
+text = " 5"
+label_settings = SubResource("LabelSettings_ot2lt")
+horizontal_alignment = 3
+vertical_alignment = 3
+
+[node name="Sprite2D2" type="Sprite2D" parent="CollisionShape2D/BaseNumCard"]
+
+[node name="Sprite2D3" type="Sprite2D" parent="CollisionShape2D/BaseNumCard"]
+visible = false
+texture = SubResource("CompressedTexture2D_uf1hq")
+
+[node name="HoverSprite" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.72156864)
+scale = Vector2(2, 2)
+texture = ExtResource("2_gkct0")
+script = ExtResource("3_1s7ae")
+
+[connection signal="mouse_entered" from="." to="HoverSprite" method="_on_card_mouse_entered"]
+[connection signal="mouse_exited" from="." to="HoverSprite" method="_on_card_mouse_exited"]
