@@ -24,6 +24,9 @@ var state = CombatState.PlayerTurn
 @onready var hp_bar = $Player_HP/ProgressBar
 @onready var enemy_hp_bar = $Enemy/ProgressBar
 @onready var score = $Player_Score/Score
+@onready var requirement = $Enemy/Requirement
+
+var current_req: Callable
 
 var hand_area: Node
 var equation_area: Node
@@ -35,6 +38,7 @@ func _on_attack_button_pressed() -> void:
 
 
 func _ready() -> void:
+	randomize()
 	attack_button.pressed.connect(_on_attack_button_pressed)
 	
 	var root = get_parent().get_parent()
@@ -43,6 +47,28 @@ func _ready() -> void:
 	
 	hp_bar.value = GameState.player_health
 	score.text = str(GameState.player_score).pad_zeros(8)
+
+	# for i in range(0, GameState.current_level):
+	var random_number = randi() % 4
+	match random_number:
+		0: 
+			# Even num
+			requirement.text = "Is Even"
+			current_req = func(x) : return even_num(x)
+		1: 
+			# Odd num
+			requirement.text = "Is Odd"
+			current_req = func(x) : return odd_num(x)
+		2: 
+			# Greater than
+			requirement.text = "Greater than 10"
+			current_req = func(x) : return greater_than(x)
+		3: 
+			# Less than
+			requirement.text = "Less than 5"
+			current_req = func(x) : return less_than(x)
+			
+
 
 	start_player_turn()
 
@@ -62,36 +88,48 @@ func evaluate_equation() -> Variant:
 	var container = equation_area.get_child(EQUATION_AREA_CARD_CONTAINER_INDEX)
 	var cards = container.get_children()
 	
+#	Error no cards in equation area
 	if cards.is_empty():
 		return null
 	
-	var result = extract_card_value(cards[0])
-	if result == null:
-		return null
+	var array_cards = []
+#	append all cards to an array to do calculations later
+#	Error cards in equation area are not num op num format
+	for i in range(cards.size()):
+		if i % 2 == 0:
+			if get_operator_type(cards[i]):
+				return null
+			else:
+				array_cards.append(extract_card_value(cards[i]))
+		elif i % 2 == 1:
+			if not get_operator_type(cards[i]):
+				return null
+			else:
+				array_cards.append(get_operator_type(cards[i]))
 	
+#	equation stuff with pemdas
+#	do multiplication and division first
 	var i = 1
-	while i < cards.size():
-		if i + 1 >= cards.size():
-			return null
-		
-		var operator = cards[i]
-		var operand = cards[i + 1]
-		
-		var op_value = get_operator_type(operator)
-		var operand_value = extract_card_value(operand)
-		
-		if op_value == null or operand_value == null:
-			return null
-		
-		result = apply_operator(result, op_value, operand_value)
-		if result == null:
-			return null
-		
-		i += 2
-	
-	if i != cards.size():
-		return null
-	print(result)
+	while i < array_cards.size():
+		if array_cards[i] == "*" or array_cards[i] == "/":
+			array_cards[i-1] = apply_operator(array_cards[i-1], array_cards[i], array_cards[i+1])
+			if array_cards[i-1] == null:
+				return null
+			array_cards.pop_at(i)
+			array_cards.pop_at(i)
+		else:
+			i += 2
+	i = 1
+#	next do addition and subtraction
+	while i < array_cards.size():
+		if array_cards[i] == "+" or array_cards[i] == "-":
+			array_cards[i-1] = apply_operator(array_cards[i-1], array_cards[i], array_cards[i+1])
+			array_cards.pop_at(i)
+			array_cards.pop_at(i)
+		else:
+			i += 2
+			
+	var result = array_cards[0]
 	return result
 
 func extract_card_value(card: Node) -> Variant:
@@ -145,6 +183,7 @@ func player_choose_attack() -> void:
 	state = CombatState.Busy
 	
 	var result = evaluate_equation()
+	check_criterias_of_result(result)
 	
 	if result == null:
 		turn_label.text = "I messed up!"
@@ -153,10 +192,19 @@ func player_choose_attack() -> void:
 		transition(CombatState.PlayerTurn)
 	else:
 		var damage = max(result, 0)
-		enemy_hp_bar.value -= result * Global.damage_multiplier
+		if (current_req.call(damage)):
+			damage *= 2
+		enemy_hp_bar.value -= damage # * Global.damage_multiplier
 		await get_tree().create_timer(ATTACK_DELAY).timeout
 		clear_equation_area()
 		transition(CombatState.PlayerTurn)
+	Global.damage_multiplier = 1
+
+func check_criterias_of_result(result: Variant):
+	if result == null:
+		return
+	#placeholder for damager multipler stuff
+	Global.damage_multiplier *= 1
 
 func start_enemy_turn() -> void:
 	state = CombatState.EnemyTurn
@@ -192,7 +240,20 @@ func end_battle(victory: bool) -> void:
 	if victory:
 		print("Got a victory")
 		GameState.player_score += 1000
+		GameState.current_level += 1
 		score.text = str(GameState.player_score).pad_zeros(8)
-        get_tree().change_scene_to_file("res://Scenes/adding_card.tscn") # Change to reload current scene with old stats later
+		get_tree().change_scene_to_file("res://Scenes/adding_card.tscn") # Change to reload current scene with old stats later
 	elif !victory:
 		get_tree().change_scene_to_file("res://Scenes/Defeated_Screen.tscn")
+
+func even_num(num) -> bool:
+	return num % 2 == 0
+
+func odd_num(num) -> bool:
+	return !(num % 2 == 0)
+
+func greater_than(num) -> bool:
+	return num > 10
+
+func less_than(num) -> bool:
+	return num < 5

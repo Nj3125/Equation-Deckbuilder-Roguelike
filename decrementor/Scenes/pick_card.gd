@@ -25,7 +25,6 @@ func _ready() -> void:
 		random_num_card(card3)
 	add_child(card3)
 
-
 func random_binop_card(card: Control) -> void:
 	var base_op_card = card.get_node("Area2D/CollisionShape2D/BaseOpCard")
 	
