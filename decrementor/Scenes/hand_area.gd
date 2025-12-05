@@ -13,7 +13,6 @@ func _ready() -> void:
 	create_deck()
 
 func create_deck() -> void:
-	Global.deck.clear()
 	
 	for num in range(1, 9):
 		var card = CARD_NUM_SCENE.instantiate()
@@ -64,7 +63,6 @@ func resuffleDiscardPileIntoDeck():
 	print("refulling discard into deck")
 	for card in Global.discardPile:
 		Global.deck.append(card)
-
 
 func _on_deck_pressed() -> void:
 	var card = draw_card()
