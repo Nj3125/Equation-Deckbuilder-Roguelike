@@ -338,6 +338,7 @@ offset_left = 938.0
 offset_top = 106.0
 offset_right = 978.0
 offset_bottom = 129.0
+horizontal_alignment = 1
 
 [node name="Equation Area" parent="." instance=ExtResource("3_rpty4")]
 position = Vector2(-3, -6)

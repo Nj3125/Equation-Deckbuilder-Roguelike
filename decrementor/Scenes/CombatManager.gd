@@ -26,6 +26,8 @@ var state = CombatState.PlayerTurn
 @onready var score = $Player_Score/Score
 @onready var requirement = $Enemy/Requirement
 
+
+
 var hand_area: Node
 var equation_area: Node
 
@@ -46,20 +48,25 @@ func _ready() -> void:
 	hp_bar.value = GameState.player_health
 	score.text = str(GameState.player_score).pad_zeros(8)
 
+	# for i in range(0, GameState.current_level):
 	var random_number = randi() % 4
 	match random_number:
 		0: 
 			# Even num
 			requirement.text = "Is Even"
+			current_req = func(x) : return even_num(x)
 		1: 
 			# Odd num
 			requirement.text = "Is Odd"
+			current_req = func(x) : return odd_num(x)
 		2: 
 			# Greater than
-			requirement.text = "Greater than"
+			requirement.text = "Greater than 10"
+			current_req = func(x) : return greater_than(x)
 		3: 
 			# Less than
-			requirement.text = "Less than"
+			requirement.text = "Less than 5"
+			current_req = func(x) : return less_than(x)
 			
 
 
@@ -185,7 +192,9 @@ func player_choose_attack() -> void:
 		transition(CombatState.PlayerTurn)
 	else:
 		var damage = max(result, 0)
-		enemy_hp_bar.value -= damage * Global.damage_multiplier
+		if (current_req.call(damage)):
+			damage *= 2
+		enemy_hp_bar.value -= damage # * Global.damage_multiplier
 		await get_tree().create_timer(ATTACK_DELAY).timeout
 		clear_equation_area()
 		transition(CombatState.PlayerTurn)
@@ -231,7 +240,21 @@ func end_battle(victory: bool) -> void:
 	if victory:
 		print("Got a victory")
 		GameState.player_score += 1000
+		GameState.current_level += 1
 		score.text = str(GameState.player_score).pad_zeros(8)
 		get_tree().change_scene_to_file("res://Scenes/adding_card.tscn") # Change to reload current scene with old stats later
 	elif !victory:
 		get_tree().change_scene_to_file("res://Scenes/Defeated_Screen.tscn")
+
+func even_num(num) -> bool:
+	return num % 2 == 0
+
+func odd_num(num) -> bool:
+	return !(num % 2 == 0)
+
+func greater_than(num) -> bool:
+	return num > 10
+
+func less_than(num) -> bool:
+	return num < 5
+
