@@ -42,6 +42,14 @@ func _ready() -> void:
 	
 	start_player_turn()
 
+# Checks if the battle has been won, if so create a new enemy.
+func _process(delta: float) -> void:
+	if !enemy_alive() && player_alive():
+		end_battle(true)
+	elif !player_alive():
+		end_battle(false)
+	
+
 func start_player_turn() -> void:
 	state = CombatState.PlayerTurn
 	turn_label.text = "Your turn"
@@ -171,13 +179,13 @@ func transition(prev_state: int) -> void:
 			pass
 
 func enemy_alive() -> bool:
-	return true
+	return enemy_hp_bar.value > 0
 
 func player_alive() -> bool:
-	return true
+	return hp_bar.value > 0
 
 func end_battle(victory: bool) -> void:
-	return
-
-func add_card():
-	print("adding card")
+	if victory:
+		get_tree().change_scene_to_file("res://Scenes/Defeated_Screen.tscn") # Change to reload current scene with old stats later
+	elif !victory:
+		get_tree().change_scene_to_file("res://Scenes/Defeated_Screen.tscn")
