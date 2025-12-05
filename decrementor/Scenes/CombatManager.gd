@@ -186,6 +186,6 @@ func player_alive() -> bool:
 
 func end_battle(victory: bool) -> void:
 	if victory:
-		get_tree().change_scene_to_file("res://Scenes/Defeated_Screen.tscn") # Change to reload current scene with old stats later
+		get_tree().change_scene_to_file("res://Scenes/adding_card.tscn") # Change to reload current scene with old stats later
 	elif !victory:
 		get_tree().change_scene_to_file("res://Scenes/Defeated_Screen.tscn")
