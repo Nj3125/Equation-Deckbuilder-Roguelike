@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Decrementor"
+config/name="DecrementorMain"
 run/main_scene="res://Scenes/MainMenu.tscn"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Global="*res://Global.gd"
 SilentWolf="*res://addons/silent_wolf/SilentWolf.gd"
+GameState="*res://Scripts/game_state.gd"
 
 [dotnet]
 

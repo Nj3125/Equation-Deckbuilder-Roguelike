@@ -3,8 +3,11 @@ extends Node
 
 var playerName : String
 var player_list = []
+var deck = []
+var discardPile = []
 
 var score = 0
+var damage_multiplier = 10
 
 func _ready() -> void:
 	SilentWolf.configure({
