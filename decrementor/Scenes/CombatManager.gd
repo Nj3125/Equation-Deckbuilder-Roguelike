@@ -26,7 +26,7 @@ var state = CombatState.PlayerTurn
 @onready var score = $Player_Score/Score
 @onready var requirement = $Enemy/Requirement
 
-
+var current_req: Callable
 
 var hand_area: Node
 var equation_area: Node
@@ -257,4 +257,3 @@ func greater_than(num) -> bool:
 
 func less_than(num) -> bool:
 	return num < 5
-
