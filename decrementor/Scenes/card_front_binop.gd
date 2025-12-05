@@ -12,14 +12,26 @@ var value
 func _ready() -> void:
 	if (random_number == 0):
 		addition.visible = true
+		subtraction.visible = false
+		multiply.visible = false
+		division.visible = false
 		value = '+'
-	if (random_number == 1):
+	elif (random_number == 1):
+		addition.visible = false
 		subtraction.visible = true
+		multiply.visible = false
+		division.visible = false
 		value = '-'
-	if (random_number == 2):
+	elif (random_number == 2):
+		addition.visible = false
+		subtraction.visible = false
 		multiply.visible = true
+		division.visible = false
 		value = 'x'
-	if (random_number == 3):
+	elif (random_number == 3):
+		addition.visible = false
+		subtraction.visible = false
+		multiply.visible = false
 		division.visible = true
 		value = '/'
 	print(value) 
