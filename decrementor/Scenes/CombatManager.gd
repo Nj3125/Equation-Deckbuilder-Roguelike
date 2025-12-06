@@ -194,7 +194,7 @@ func player_choose_attack() -> void:
 		var damage = max(result, 0)
 		if (current_req.call(damage)):
 			damage *= 2
-		enemy_hp_bar.value -= damage # * Global.damage_multiplier
+		enemy_hp_bar.value -= damage * Global.damage_multiplier
 		await get_tree().create_timer(ATTACK_DELAY).timeout
 		clear_equation_area()
 		transition(CombatState.PlayerTurn)
@@ -242,7 +242,6 @@ func end_battle(victory: bool) -> void:
 		GameState.player_score += 1000
 		GameState.current_level += 1
 		score.text = str(GameState.player_score).pad_zeros(8)
-		get_tree().change_scene_to_file("res://Scenes/adding_card.tscn") # Change to reload current scene with old stats later
 		Global.reshuffle_discard_into_deck()
 		get_tree().change_scene_to_file("res://Scenes/adding_card.tscn")
 	elif !victory:

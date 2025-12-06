@@ -33,9 +33,9 @@ func create_deck() -> void:
 		deck.clear()
 		discardPile.clear()
 		
-		# Create the base deck - one of each card (14 total)
 		for num in range(0, 10):
 			var card = CARD_NUM_SCENE.instantiate()
+			card.already_initialized = true
 			var label = card.get_node("Area2D/CollisionShape2D/BaseNumCard/Label")
 			label.text = str(num)
 			deck.append(card)
@@ -57,8 +57,11 @@ func create_deck() -> void:
 		deck.append(div_card)
 		
 		deck_initialized = true
+		print("Deck created with ", deck.size(), " cards")
 
 func set_operator_visible(card: Control, operator_name: String) -> void:
+	card.already_initialized = true
+	
 	var base_op_card = card.get_node("Area2D/CollisionShape2D/BaseOpCard")
 	
 	base_op_card.get_node("Plus").visible = false
@@ -68,6 +71,15 @@ func set_operator_visible(card: Control, operator_name: String) -> void:
 	
 	if base_op_card.has_node(operator_name):
 		base_op_card.get_node(operator_name).visible = true
+		
+	if operator_name == "Plus":
+		card.value = '+'
+	elif operator_name == "Minus":
+		card.value = '-'
+	elif operator_name == "Multi":
+		card.value = 'x'
+	elif operator_name == "Div":
+		card.value = '/'
 
 func reshuffle_discard_into_deck() -> void:
 	var valid_cards = []
@@ -79,7 +91,7 @@ func reshuffle_discard_into_deck() -> void:
 	
 	for card in valid_cards:
 		deck.append(card)
-		print("back to deck :  ", get_card_name(card))
+		print("Card returned to deck: ", get_card_name(card))
 
 func get_card_name(card: Control) -> String:
 	var num_label = card.get_node_or_null("Area2D/CollisionShape2D/BaseNumCard/Label")

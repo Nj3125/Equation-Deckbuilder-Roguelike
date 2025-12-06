@@ -82,8 +82,13 @@ func draw_card() -> Control:
 		card = Global.deck[idx]
 		Global.deck.remove_at(idx)
 	
-	print("card : ", get_card_name(card), ",num of cards ", Global.deck.size())
+	var card_name_before = get_card_name(card)
+	print("BEFORE adding to scene: ", card_name_before)
+	
 	card_container.add_child(card)
+	var card_name_after = get_card_name(card)
+	print("AFTER adding to scene: ", card_name_after, " | Remaining in deck: ", Global.deck.size())
+	
 	return card
 
 func get_card_name(card: Control) -> String:

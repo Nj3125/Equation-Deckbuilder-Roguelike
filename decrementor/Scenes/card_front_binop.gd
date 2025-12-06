@@ -2,14 +2,17 @@ extends Control
 
 var random_number = randi() % 4
 var value
+var already_initialized = false
 
 @onready var addition = $Area2D/CollisionShape2D/BaseOpCard/Plus
 @onready var subtraction = $Area2D/CollisionShape2D/BaseOpCard/Minus
 @onready var multiply = $Area2D/CollisionShape2D/BaseOpCard/Multi
 @onready var division = $Area2D/CollisionShape2D/BaseOpCard/Div
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if already_initialized:
+		return
+	
 	if (random_number == 0):
 		addition.visible = true
 		subtraction.visible = false
