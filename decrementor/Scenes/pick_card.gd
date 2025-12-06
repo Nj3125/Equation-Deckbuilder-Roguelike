@@ -64,6 +64,8 @@ func raycast_check_for_card():
 	return null
 
 func addCardToDeck(card: Control):
+	if card.get_parent():
+		card.get_parent().remove_child(card)
 	Global.deck.append(card)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
