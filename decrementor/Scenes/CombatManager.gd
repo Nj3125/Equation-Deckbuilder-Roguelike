@@ -242,7 +242,9 @@ func end_battle(victory: bool) -> void:
 		GameState.player_score += 1000
 		GameState.current_level += 1
 		score.text = str(GameState.player_score).pad_zeros(8)
-		Global.reshuffle_discard_into_deck()
+		var hand_container = hand_area.get_node("CardContainer")
+		var equation_container = equation_area.get_child(EQUATION_AREA_CARD_CONTAINER_INDEX)
+		Global.reset_round(hand_container, equation_container)
 		get_tree().change_scene_to_file("res://Scenes/adding_card.tscn")
 	elif !victory:
 		get_tree().change_scene_to_file("res://Scenes/Defeated_Screen.tscn")

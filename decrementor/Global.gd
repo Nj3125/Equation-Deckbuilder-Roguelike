@@ -1,8 +1,6 @@
 extends Node
-
 const CARD_NUM_SCENE = preload("res://Scenes/card_front_num.tscn")
 const CARD_BINOP_SCENE = preload("res://Scenes/card_front_binop.tscn")
-
 var playerName : String
 var player_list = []
 var deck = []
@@ -29,35 +27,33 @@ func leaderboard():
 		Global.player_list.append(Global.playerName)
 
 func create_deck() -> void:
-	if not deck_initialized:
-		deck.clear()
-		discardPile.clear()
-		
-		for num in range(0, 10):
-			var card = CARD_NUM_SCENE.instantiate()
-			card.already_initialized = true
-			var label = card.get_node("Area2D/CollisionShape2D/BaseNumCard/Label")
-			label.text = str(num)
-			deck.append(card)
-		
-		var plus_card = CARD_BINOP_SCENE.instantiate()
-		set_operator_visible(plus_card, "Plus")
-		deck.append(plus_card)
-		
-		var minus_card = CARD_BINOP_SCENE.instantiate()
-		set_operator_visible(minus_card, "Minus")
-		deck.append(minus_card)
-		
-		var multi_card = CARD_BINOP_SCENE.instantiate()
-		set_operator_visible(multi_card, "Multi")
-		deck.append(multi_card)
-		
-		var div_card = CARD_BINOP_SCENE.instantiate()
-		set_operator_visible(div_card, "Div")
-		deck.append(div_card)
-		
-		deck_initialized = true
-		print("Deck created with ", deck.size(), " cards")
+	deck.clear()
+	discardPile.clear()
+	
+	for num in range(0, 10):
+		var card = CARD_NUM_SCENE.instantiate()
+		card.already_initialized = true
+		var label = card.get_node("Area2D/CollisionShape2D/BaseNumCard/Label")
+		label.text = str(num)
+		deck.append(card)
+	
+	var plus_card = CARD_BINOP_SCENE.instantiate()
+	set_operator_visible(plus_card, "Plus")
+	deck.append(plus_card)
+	
+	var minus_card = CARD_BINOP_SCENE.instantiate()
+	set_operator_visible(minus_card, "Minus")
+	deck.append(minus_card)
+	
+	var multi_card = CARD_BINOP_SCENE.instantiate()
+	set_operator_visible(multi_card, "Multi")
+	deck.append(multi_card)
+	
+	var div_card = CARD_BINOP_SCENE.instantiate()
+	set_operator_visible(div_card, "Div")
+	deck.append(div_card)
+	
+	deck_initialized = true
 
 func set_operator_visible(card: Control, operator_name: String) -> void:
 	card.already_initialized = true
@@ -84,8 +80,12 @@ func set_operator_visible(card: Control, operator_name: String) -> void:
 func reshuffle_discard_into_deck() -> void:
 	var valid_cards = []
 	for card in discardPile:
-		if is_instance_valid(card):
+		if is_instance_valid(card) and not card.is_queued_for_deletion():
+			if card.get_parent():
+				card.get_parent().remove_child(card)
 			valid_cards.append(card)
+		else:
+			print("Skipping invalid card during reshuffle")
 	
 	discardPile.clear()
 	
@@ -93,7 +93,55 @@ func reshuffle_discard_into_deck() -> void:
 		deck.append(card)
 		print("Card returned to deck: ", get_card_name(card))
 
+func discard_card(card: Control) -> void:
+	if is_instance_valid(card) and not card.is_queued_for_deletion():
+		if card.get_parent():
+			card.get_parent().remove_child(card)
+		discardPile.append(card)
+		print("Card discarded: ", get_card_name(card))
+	else:
+		print("Attempted to discard invalid card")
+
+func return_hand_to_deck(hand_container: Node) -> void:
+	if not hand_container:
+		return
+	
+	var cards_to_return = []
+	for card in hand_container.get_children():
+		if is_instance_valid(card) and not card.is_queued_for_deletion():
+			cards_to_return.append(card)
+	
+	for card in cards_to_return:
+		hand_container.remove_child(card)
+		deck.append(card)
+		print("Card returned to deck: ", get_card_name(card))
+
+func return_equation_to_deck(equation_container: Node) -> void:
+	if not equation_container:
+		return
+	
+	var cards_to_return = []
+	for card in equation_container.get_children():
+		if is_instance_valid(card) and not card.is_queued_for_deletion():
+			cards_to_return.append(card)
+	
+	for card in cards_to_return:
+		equation_container.remove_child(card)
+		deck.append(card)
+		print("Card returned to deck: ", get_card_name(card))
+
+func reset_round(hand_container: Node = null, equation_container: Node = null) -> void:
+	if hand_container:
+		return_hand_to_deck(hand_container)
+	if equation_container:
+		return_equation_to_deck(equation_container)
+	
+	print("round reset.size  ", deck.size())
+
 func get_card_name(card: Control) -> String:
+	if not is_instance_valid(card):
+		return "Invalid"
+		
 	var num_label = card.get_node_or_null("Area2D/CollisionShape2D/BaseNumCard/Label")
 	if num_label:
 		return "Number " + num_label.text

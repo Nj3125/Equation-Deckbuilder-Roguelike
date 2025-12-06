@@ -42,7 +42,6 @@ func draw_card() -> Control:
 	Global.deck.remove_at(idx)
 	
 	var card_name_before = get_card_name(card)
-	print("BEFORE adding to scene: ", card_name_before)
 	
 	card_container.add_child(card)
 	var card_name_after = get_card_name(card)

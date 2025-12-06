@@ -1,9 +1,7 @@
 extends HBoxContainer
-
 const CARD_NUM_SCENE = preload("res://Scenes/card_front_num.tscn")
 const CARD_BINOP_SCENE = preload("res://Scenes/card_front_binop.tscn")
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	randomize()
 	
@@ -26,6 +24,8 @@ func _ready() -> void:
 	add_child(card3)
 
 func random_binop_card(card: Control) -> void:
+	card.already_initialized = true
+	
 	var base_op_card = card.get_node("Area2D/CollisionShape2D/BaseOpCard")
 	
 	base_op_card.get_node("Plus").visible = false
@@ -34,9 +34,22 @@ func random_binop_card(card: Control) -> void:
 	base_op_card.get_node("Div").visible = false
 	
 	var random_int = randi_range(1,4)
-	base_op_card.get_child(random_int).visible = true
+	var operator_node = base_op_card.get_child(random_int)
+	operator_node.visible = true
+	
+	match operator_node.name:
+		"Plus":
+			card.value = '+'
+		"Minus":
+			card.value = '-'
+		"Multi":
+			card.value = 'x'
+		"Div":
+			card.value = '/'
 
 func random_num_card(card: Control) -> void:
+	card.already_initialized = true
+	
 	var label = card.get_node("Area2D/CollisionShape2D/BaseNumCard/Label")
 	
 	var random_int = randi_range(0,9)
@@ -47,10 +60,14 @@ func _input(event):
 		if event.pressed:
 			var card = raycast_check_for_card()
 			if card:
-				Global.deck.append(card)
-				get_tree().change_scene_to_file("res://Scenes/Level1.tscn")
+				if is_instance_valid(card) and not card.is_queued_for_deletion():
+					if card.get_parent():
+						card.get_parent().remove_child(card)
+					
+					Global.deck.append(card)
+					print("current deck size: ", Global.deck.size())
+					get_tree().change_scene_to_file("res://Scenes/Level1.tscn")
 
-# function checks card collision with mouse
 func raycast_check_for_card():
 	var space_state = get_world_2d().direct_space_state
 	var parameters = PhysicsPointQueryParameters2D.new()
@@ -63,6 +80,5 @@ func raycast_check_for_card():
 		return result[0].collider.get_parent()
 	return null
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
