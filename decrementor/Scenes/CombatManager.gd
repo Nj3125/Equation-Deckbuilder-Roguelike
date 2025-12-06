@@ -198,7 +198,6 @@ func player_choose_attack() -> void:
 		await get_tree().create_timer(ATTACK_DELAY).timeout
 		clear_equation_area()
 		transition(CombatState.PlayerTurn)
-	Global.damage_multiplier = 1
 
 func check_criterias_of_result(result: Variant):
 	if result == null:
