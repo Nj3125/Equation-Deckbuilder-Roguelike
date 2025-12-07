@@ -177,7 +177,6 @@ func _ready() -> void:
 				
 				# removing conflicting requirements
 				unique_numbers_list.erase(4)
-				unique_numbers_list.erase(5)
 			4: 
 				# Less than
 				var lambda = func(x) : return less_than(x, 10)
@@ -197,7 +196,6 @@ func _ready() -> void:
 				
 				# removing conflicting requirements
 				unique_numbers_list.erase(2)
-				unique_numbers_list.erase(3)
 			6:
 				# Multiple of
 				var lambda = func(x) : return multiple_of(x, 3)
@@ -371,18 +369,19 @@ func player_choose_attack() -> void:
 		var damage = max(result, 0)
 		damage = int(damage)
 		var total_multiplier = 1.0
+		var bonus_damage = 0
 		for req_data in current_strong_req_list:
 			if !req_data["func"].call(damage):
 				doesDamage = false
 			else:
-				damage += 10
+				bonus_damage += 10
 				total_multiplier *= req_data["multiplier"]
 		for req_data in current_req_list:
 			if req_data["func"].call(damage):
 				total_multiplier *= req_data["multiplier"]
 		
 		if doesDamage:
-			damage = damage * total_multiplier
+			damage = (damage + bonus_damage) * total_multiplier
 		else:
 			damage *= 0
 		$User/AnimationPlayer.play("attack")
