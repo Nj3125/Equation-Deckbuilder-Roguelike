@@ -14,19 +14,10 @@ const MESSAGE_DISPLAY_TIME = 1.5
 const ATTACK_DELAY = 0.5
 const ENEMY_TURN_DELAY = 0.8
 
-# Enemy texture paths
-const ENEMY_TEXTURES = [
-	"res://Assets/Images/Enemy1.png",
-	"res://Assets/Images/Enemy2.png",
-	"res://Assets/Images/Enemy3.png",
-	"res://Assets/Images/Enemy4.png"
-]
-
 var state = CombatState.PlayerTurn
 
 @onready var player = $User 
 @onready var enemy = $Enemy 
-@onready var enemy_texture = $Enemy/EnemyTexture
 
 @onready var attack_button = $Attack_Button
 @onready var turn_label = $Label
@@ -47,6 +38,8 @@ func _on_attack_button_pressed() -> void:
 	if state == CombatState.PlayerTurn:
 		player_choose_attack()
 
+
+
 func _ready() -> void:
 	randomize()
 	attack_button.pressed.connect(_on_attack_button_pressed)
@@ -56,7 +49,6 @@ func _ready() -> void:
 	equation_area = root.get_node("Equation Area")
 	hp_bar.value = GameState.player_health
 	score.text = str(GameState.player_score).pad_zeros(8)
-	set_random_enemy_texture()
 	var unique_numbers_list = [0,1,2,3,4,5,6,7,8,9]
 	# for i in range(0, GameState.current_level):
 	requirement.text = ""
@@ -242,11 +234,6 @@ func _ready() -> void:
 	
 	
 	start_player_turn()
-
-func set_random_enemy_texture() -> void:
-	var random_index = randi() % ENEMY_TEXTURES.size()
-	var texture_path = ENEMY_TEXTURES[random_index]
-	enemy_texture.texture = load(texture_path)
 
 # Checks if the battle has been won, if so create a new enemy.
 func _process(_delta: float) -> void:

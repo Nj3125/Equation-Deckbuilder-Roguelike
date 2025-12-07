@@ -3,16 +3,16 @@
 [ext_resource type="Texture2D" uid="uid://cait548bqcg30" path="res://Assets/Decrementor_level1.png" id="1_6jj8j"]
 [ext_resource type="Script" uid="uid://blff3bg4ahv26" path="res://Scripts/pause_menu.gd" id="1_q12u6"]
 [ext_resource type="FontFile" uid="uid://dwspfum8vw6ln" path="res://Assets/Fonts/GrapeSoda.ttf" id="2_joc8x"]
-[ext_resource type="PackedScene" uid="uid://dah3kijylmaik" path="res://Scenes/hand_area.tscn" id="3_2h8qs"]
+[ext_resource type="PackedScene" uid="uid://cuwcnbr7yu3mb" path="res://Scenes/hand_area.tscn" id="3_2h8qs"]
 [ext_resource type="Script" uid="uid://watu76vudatv" path="res://Scripts/placeholder_died.gd" id="3_joc8x"]
 [ext_resource type="PackedScene" uid="uid://dq2q8j8fww1ky" path="res://Scenes/equation_area.tscn" id="3_rpty4"]
 [ext_resource type="Script" uid="uid://cb8yi27uj3rbi" path="res://Scenes/card_manager.gd" id="4_6jj8j"]
-[ext_resource type="Script" path="res://Scenes/equation_area.gd" id="4_06um6"]
+[ext_resource type="Script" uid="uid://4dxdcqq4odg0" path="res://Scenes/equation_area.gd" id="4_06um6"]
 [ext_resource type="Texture2D" uid="uid://dcq3apv87xedo" path="res://Assets/Deck.png" id="4_rpty4"]
 [ext_resource type="Texture2D" uid="uid://bo8eckos4du3f" path="res://Assets/Images/User.png" id="4_slnnj"]
 [ext_resource type="Texture2D" uid="uid://crpdkoaxmqg" path="res://Assets/hovered deck.png" id="5_rpty4"]
 [ext_resource type="Script" uid="uid://cn0evpoljb0p4" path="res://Scenes/CombatManager.gd" id="5_ysn8j"]
-[ext_resource type="Texture2D" uid="uid://1y7dcrepgjor" path="res://Assets/Images/Enemy4.png" id="9_6jj8j"]
+[ext_resource type="Texture2D" uid="uid://buqg0rddx5koj" path="res://Assets/Images/Enemy.png" id="9_6jj8j"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q12u6"]
 
@@ -29,6 +29,9 @@ corner_radius_top_left = 12
 corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q12u6"]
+bg_color = Color(0.27251795, 0.2656641, 0.2563085, 1)
 
 [sub_resource type="Animation" id="Animation_06um6"]
 length = 0.001
@@ -151,9 +154,6 @@ func _ready() -> void:
 	text = \"Level: \" + str(GameState.current_level)
 "
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q12u6"]
-bg_color = Color(0.27251795, 0.2656641, 0.2563085, 1)
-
 [node name="Node2D" type="Node2D"]
 
 [node name="DecrementorLevel1" type="Sprite2D" parent="."]
@@ -223,156 +223,6 @@ theme_override_fonts/font = ExtResource("2_joc8x")
 theme_override_font_sizes/font_size = 12
 text = "U Died (placeholder cuz no functionality)"
 script = ExtResource("3_joc8x")
-
-[node name="Deck (VBoxContainer)" type="VBoxContainer" parent="UI (CanvasLayer)"]
-offset_left = 1003.0
-offset_top = 435.0
-offset_right = 1067.0
-offset_bottom = 566.0
-scale = Vector2(1.5, 1.5)
-
-[node name="Label" type="Label" parent="UI (CanvasLayer)/Deck (VBoxContainer)"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_joc8x")
-theme_override_font_sizes/font_size = 30
-text = "Deck"
-horizontal_alignment = 1
-
-[node name="Deck" type="TextureButton" parent="UI (CanvasLayer)/Deck (VBoxContainer)"]
-layout_mode = 2
-texture_normal = ExtResource("4_rpty4")
-texture_pressed = ExtResource("5_rpty4")
-texture_hover = ExtResource("5_rpty4")
-
-[node name="CombatManager (Node)" type="Node" parent="UI (CanvasLayer)"]
-script = ExtResource("5_ysn8j")
-
-[node name="Player_Score" type="HBoxContainer" parent="UI (CanvasLayer)/CombatManager (Node)"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -343.99994
-offset_top = 20.0
-offset_right = 38.0
-offset_bottom = 74.0
-grow_horizontal = 0
-scale = Vector2(0.8, 0.8)
-theme_override_constants/separation = 4
-alignment = 2
-
-[node name="Text" type="Label" parent="UI (CanvasLayer)/CombatManager (Node)/Player_Score"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_joc8x")
-theme_override_font_sizes/font_size = 53
-text = "SCORE:"
-
-[node name="Score" type="Label" parent="UI (CanvasLayer)/CombatManager (Node)/Player_Score"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_joc8x")
-theme_override_font_sizes/font_size = 53
-text = "XXXXXXXX"
-
-[node name="Label" type="Label" parent="UI (CanvasLayer)/CombatManager (Node)"]
-offset_left = 494.0
-offset_top = 1.0
-offset_right = 712.0
-offset_bottom = 82.0
-scale = Vector2(0.8, 0.8)
-theme_override_fonts/font = ExtResource("2_joc8x")
-theme_override_font_sizes/font_size = 45
-text = "Your Turn"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Attack_Button" type="Button" parent="UI (CanvasLayer)/CombatManager (Node)"]
-offset_left = 978.0
-offset_top = 346.0
-offset_right = 1120.0
-offset_bottom = 424.0
-theme_override_fonts/font = ExtResource("2_joc8x")
-theme_override_font_sizes/font_size = 32
-text = "Equate
-"
-
-[node name="Player_HP" type="HBoxContainer" parent="UI (CanvasLayer)/CombatManager (Node)"]
-offset_left = 66.99999
-offset_top = 18.000002
-offset_right = 477.5
-offset_bottom = 72.0
-scale = Vector2(0.8, 0.8)
-
-[node name="Label" type="Label" parent="UI (CanvasLayer)/CombatManager (Node)/Player_HP"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_joc8x")
-theme_override_font_sizes/font_size = 53
-text = "HP: "
-
-[node name="ProgressBar" type="ProgressBar" parent="UI (CanvasLayer)/CombatManager (Node)/Player_HP"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-theme_override_styles/background = SubResource("StyleBoxFlat_joc8x")
-theme_override_styles/fill = SubResource("StyleBoxFlat_jghel")
-value = 100.0
-show_percentage = false
-
-[node name="User" type="Node2D" parent="UI (CanvasLayer)/CombatManager (Node)"]
-
-[node name="Sprite2D" type="Sprite2D" parent="UI (CanvasLayer)/CombatManager (Node)/User"]
-position = Vector2(261, 207)
-scale = Vector2(3, 3)
-texture = ExtResource("4_slnnj")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="UI (CanvasLayer)/CombatManager (Node)/User"]
-libraries = {
-&"": SubResource("AnimationLibrary_06um6")
-}
-
-[node name="Enemy" type="Node2D" parent="UI (CanvasLayer)/CombatManager (Node)"]
-
-[node name="EnemyTexture" type="Sprite2D" parent="UI (CanvasLayer)/CombatManager (Node)/Enemy"]
-position = Vector2(957, 196.00002)
-scale = Vector2(2.0781255, 2.1562502)
-texture = ExtResource("9_6jj8j")
-
-[node name="ProgressBar" type="ProgressBar" parent="UI (CanvasLayer)/CombatManager (Node)/Enemy"]
-clip_contents = true
-offset_left = 825.0
-offset_top = 240.0
-offset_right = 1103.0
-offset_bottom = 280.0
-theme_override_fonts/font = ExtResource("2_joc8x")
-theme_override_font_sizes/font_size = 39
-theme_override_styles/background = SubResource("StyleBoxFlat_slnnj")
-theme_override_styles/fill = SubResource("StyleBoxFlat_t3or0")
-step = 1.0
-value = 100.0
-rounded = true
-
-[node name="Requirement" type="Label" parent="UI (CanvasLayer)/CombatManager (Node)/Enemy"]
-offset_left = 807.0
-offset_top = 70.0
-offset_right = 1108.0
-offset_bottom = 96.0
-theme_override_fonts/font = ExtResource("2_joc8x")
-theme_override_font_sizes/font_size = 25
-text = "(Requirements)"
-horizontal_alignment = 1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="UI (CanvasLayer)/CombatManager (Node)/Enemy"]
-libraries = {
-&"": SubResource("AnimationLibrary_0wsr5")
-}
-
-[node name="Level Label" type="Label" parent="UI (CanvasLayer)"]
-offset_left = 72.0
-offset_top = 74.0
-offset_right = 163.0
-offset_bottom = 97.0
-theme_override_fonts/font = ExtResource("2_joc8x")
-theme_override_font_sizes/font_size = 25
-text = "Level: 0"
-script = SubResource("GDScript_6jj8j")
 
 [node name="Pause Menu" type="Control" parent="UI (CanvasLayer)"]
 process_mode = 3
