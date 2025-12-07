@@ -38,8 +38,6 @@ func _on_attack_button_pressed() -> void:
 	if state == CombatState.PlayerTurn:
 		player_choose_attack()
 
-
-
 func _ready() -> void:
 	randomize()
 	attack_button.pressed.connect(_on_attack_button_pressed)
@@ -58,7 +56,7 @@ func _ready() -> void:
 	var difficulty = (GameState.current_level / 5) + 1 - (GameState.current_level / 10)
 	
 #	number of strong requirements calculated from level
-	var strong_difficulty = (GameState.current_level / 10) + 4
+	var strong_difficulty = (GameState.current_level / 10)
 	
 #	decreasing damage multipler every 10 levels
 	damageMultipler = 2 - strong_difficulty*.1
