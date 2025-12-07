@@ -69,6 +69,7 @@ offset_left = 488.0
 offset_top = 312.0
 offset_right = 896.0
 offset_bottom = 382.0
+theme_override_font_sizes/font_size = 30
 metadata/_edit_use_anchors_ = true
 
 [node name="Submit" type="Button" parent="PlayerName"]
@@ -108,12 +109,12 @@ metadata/_edit_use_anchors_ = true
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 334.0
-offset_right = 778.0
+offset_left = 392.0
+offset_right = 836.0
 offset_bottom = 96.0
 grow_horizontal = 2
 size_flags_horizontal = 4
-text = "U Died bozo"
+text = "You Died!"
 label_settings = SubResource("LabelSettings_1qw6l")
 metadata/_edit_use_anchors_ = true
 
