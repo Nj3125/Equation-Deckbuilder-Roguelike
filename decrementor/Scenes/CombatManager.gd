@@ -19,8 +19,7 @@ const ENEMY_TEXTURES = [
 	"res://Assets/Images/Enemy1.png",
 	"res://Assets/Images/Enemy2.png",
 	"res://Assets/Images/Enemy3.png",
-	"res://Assets/Images/Enemy4.png",
-	"res://Assets/Images/Enemy5.png"
+	"res://Assets/Images/Enemy4.png"
 ]
 
 var state = CombatState.PlayerTurn
