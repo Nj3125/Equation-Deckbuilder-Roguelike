@@ -111,21 +111,6 @@ corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
-[sub_resource type="Animation" id="Animation_ug0sv"]
-resource_name = "enemy_attack"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.16666667, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(957, 196.00002), Vector2(917, 196), Vector2(957, 196)]
-}
-
 [sub_resource type="Animation" id="Animation_0wsr5"]
 length = 0.001
 tracks/0/type = "value"
@@ -139,6 +124,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(957, 196.00002)]
+}
+
+[sub_resource type="Animation" id="Animation_ug0sv"]
+resource_name = "enemy_attack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(957, 196.00002), Vector2(917, 196), Vector2(957, 196)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0wsr5"]
