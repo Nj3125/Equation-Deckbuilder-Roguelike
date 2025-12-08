@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://braw558cc5aki"]
+[gd_scene load_steps=6 format=3 uid="uid://braw558cc5aki"]
 
 [ext_resource type="Script" uid="uid://mqkewlp6k7op" path="res://Scenes/adding_card.gd" id="1_b0prm"]
 [ext_resource type="Texture2D" uid="uid://bvf61qcceyudm" path="res://Assets/Images/Decrementor.png" id="1_du7oc"]
 [ext_resource type="Script" uid="uid://ft72e6y4ttop" path="res://Scenes/pick_card.gd" id="2_1ufjy"]
+[ext_resource type="FontFile" uid="uid://dwspfum8vw6ln" path="res://Assets/Fonts/GrapeSoda.ttf" id="4_b0prm"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1ufjy"]
 texture = ExtResource("1_du7oc")
@@ -41,8 +42,9 @@ layout_mode = 0
 offset_top = 37.0
 offset_right = 1152.0
 offset_bottom = 106.0
-theme_override_font_sizes/font_size = 50
-text = "Pick a Card to Add to Your Deck"
+theme_override_fonts/font = ExtResource("4_b0prm")
+theme_override_font_sizes/font_size = 55
+text = "Pick A Card To Add To Your Deck"
 horizontal_alignment = 1
 
 [node name="Skip" type="Button" parent="."]
