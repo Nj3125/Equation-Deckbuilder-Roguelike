@@ -210,18 +210,11 @@ value = 100.0
 show_percentage = false
 
 [node name="Deck (VBoxContainer)" type="VBoxContainer" parent="UI (CanvasLayer)"]
-offset_left = 1003.0
-offset_top = 435.0
-offset_right = 1067.0
-offset_bottom = 566.0
+offset_left = 1009.0
+offset_top = 479.0
+offset_right = 1073.0
+offset_bottom = 610.0
 scale = Vector2(1.5, 1.5)
-
-[node name="Label" type="Label" parent="UI (CanvasLayer)/Deck (VBoxContainer)"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_joc8x")
-theme_override_font_sizes/font_size = 30
-text = "Deck"
-horizontal_alignment = 1
 
 [node name="Deck" type="TextureButton" parent="UI (CanvasLayer)/Deck (VBoxContainer)"]
 layout_mode = 2
@@ -516,5 +509,26 @@ position = Vector2(-1, -1)
 
 [node name="Card Manager" type="Node2D" parent="."]
 script = ExtResource("4_6jj8j")
+
+[node name="Deck Label" type="Label" parent="."]
+offset_left = 976.0
+offset_top = 443.0
+offset_right = 1147.0
+offset_bottom = 474.0
+theme_override_fonts/font = ExtResource("2_joc8x")
+theme_override_font_sizes/font_size = 30
+text = "Pull card here"
+horizontal_alignment = 1
+
+[node name="Req Label" type="Label" parent="."]
+offset_left = 416.0
+offset_top = 141.0
+offset_right = 843.0
+offset_bottom = 196.0
+theme_override_fonts/font = ExtResource("2_joc8x")
+theme_override_font_sizes/font_size = 25
+text = "Orange requirments must be fulfilled to 
+deal damage. Both Green and Orange apply
+damage multipliers."
 
 [connection signal="pressed" from="UI (CanvasLayer)/Deck (VBoxContainer)/Deck" to="Hand Area" method="_on_deck_pressed"]

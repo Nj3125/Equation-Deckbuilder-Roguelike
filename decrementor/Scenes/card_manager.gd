@@ -39,6 +39,14 @@ func hide_equation_area_label(equation_area):
 	var label_node = equation_area.get_node_or_null("Label")
 	if label_node:
 		label_node.visible = false
+		
+	var deck_label = get_node_or_null("../Deck Label")
+	if deck_label:
+		deck_label.visible = false
+	
+	var req_label = get_node_or_null("../Req Label")
+	if req_label:
+		req_label.visible = false
 
 # function checks card collision with mouse
 func raycast_check_for_card():
