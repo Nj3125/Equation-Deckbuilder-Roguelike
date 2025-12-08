@@ -465,7 +465,7 @@ func multiple_of(num, num2) -> bool:
 func isPrime(num) -> bool:
 	if num <= 1:
 		return false
-	var num_sqrt = int(sqrt(num))
+	var num_sqrt = int(sqrt(num)) + 1
 	for i in range(2,num_sqrt):
 		if (num % i == 0):
 			return false

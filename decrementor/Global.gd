@@ -22,13 +22,6 @@ func _ready() -> void:
 		"open_scene_on_close": "res://Scenes/MainMenu.tscn"
 	})
 
-func _physics_process(delta: float) -> void:
-	leaderboard()
-
-func leaderboard():
-	for score in Global.score:
-		Global.player_list.append(Global.playerName)
-
 func create_deck() -> void:
 	deck.clear()
 	discardPile.clear()
