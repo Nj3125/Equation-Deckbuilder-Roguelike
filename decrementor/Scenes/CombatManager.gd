@@ -49,7 +49,6 @@ func _on_attack_button_pressed() -> void:
 func _ready() -> void:
 	randomize()
 	attack_button.pressed.connect(_on_attack_button_pressed)
-	
 	var root = get_parent().get_parent()
 	hand_area = root.get_node("Hand Area")
 	equation_area = root.get_node("Equation Area")
@@ -248,6 +247,10 @@ func set_random_enemy_texture() -> void:
 
 # Checks if the battle has been won, if so create a new enemy.
 func _process(_delta: float) -> void:
+	if Input.is_action_pressed("Cheat"):
+		enemy_hp_bar.value = 0
+	if Input.is_action_pressed("Die"):
+		hp_bar.value = 0
 	if !enemy_alive() && player_alive():
 		await get_tree().create_timer(ENEMY_TURN_DELAY).timeout
 		end_battle(true)
@@ -465,7 +468,7 @@ func multiple_of(num, num2) -> bool:
 func isPrime(num) -> bool:
 	if num <= 1:
 		return false
-	var num_sqrt = int(sqrt(num))
+	var num_sqrt = int(sqrt(num)) + 1
 	for i in range(2,num_sqrt):
 		if (num % i == 0):
 			return false

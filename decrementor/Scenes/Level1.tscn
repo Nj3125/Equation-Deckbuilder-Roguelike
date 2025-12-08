@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://crpdkoaxmqg" path="res://Assets/hovered deck.png" id="5_rpty4"]
 [ext_resource type="Script" uid="uid://cn0evpoljb0p4" path="res://Scenes/CombatManager.gd" id="5_ysn8j"]
 [ext_resource type="Texture2D" uid="uid://1y7dcrepgjor" path="res://Assets/Images/Enemy4.png" id="7_rpty4"]
-[ext_resource type="Script" path="res://Scenes/progress_bar.gd" id="8_06um6"]
+[ext_resource type="Script" uid="uid://c3lbatqfug88o" path="res://Scenes/progress_bar.gd" id="8_06um6"]
 [ext_resource type="Script" path="res://Scenes/h_slider.gd" id="9_6jj8j"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q12u6"]
@@ -528,9 +528,10 @@ offset_right = 816.0
 offset_bottom = 228.0
 theme_override_fonts/font = ExtResource("2_joc8x")
 theme_override_font_sizes/font_size = 25
-text = "Orange requirments must be fulfilled to 
-deal damage. Both Green and Orange apply
-damage multipliers."
+text = "The two text above are requirements that 
+apply a multiplier to damage. The orange 
+requirement is mandatory to damage enemy,
+while green is not."
 horizontal_alignment = 1
 
 [connection signal="pressed" from="UI (CanvasLayer)/Deck (VBoxContainer)/Deck" to="Hand Area" method="_on_deck_pressed"]
