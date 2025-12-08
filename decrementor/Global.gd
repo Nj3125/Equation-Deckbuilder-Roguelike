@@ -2,6 +2,7 @@ extends Node
 const CARD_NUM_SCENE = preload("res://Scenes/card_front_num.tscn")
 const CARD_BINOP_SCENE = preload("res://Scenes/card_front_binop.tscn")
 var playerName : String
+var labels_hidden: bool = false
 var player_list = []
 var deck = []
 var discardPile = []
@@ -194,3 +195,4 @@ func get_card_name(card: Control) -> String:
 			return "Div"
 	
 	return "Unknown"
+	

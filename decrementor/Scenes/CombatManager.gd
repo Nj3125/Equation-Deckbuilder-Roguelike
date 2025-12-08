@@ -364,7 +364,7 @@ func player_choose_attack() -> void:
 	var doesDamage = true
 	
 	if result == null:
-		turn_label.text = "Not a Proper Equation"
+		turn_label.text = "Not a Equation"
 		await get_tree().create_timer(MESSAGE_DISPLAY_TIME).timeout
 		clear_equation_area()
 		transition(CombatState.PlayerTurn)
