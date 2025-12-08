@@ -115,7 +115,7 @@ func _ready() -> void:
 			6:
 				# Multiple of
 				var lambda = func(x) : return multiple_of(x, 3)
-				requirement.text += "Multiple of 3(1.5x)\n"
+				requirement.text += "Multiple of 3 (1.5x)\n"
 				unique_numbers_list.erase(unique_numbers_list[random_requirement])
 				current_req_list.append({"func": lambda, "multiplier": 1.5})
 			7:

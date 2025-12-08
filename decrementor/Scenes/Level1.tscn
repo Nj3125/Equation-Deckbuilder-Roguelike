@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://nk7db4ecd6wr"]
+[gd_scene load_steps=29 format=3 uid="uid://nk7db4ecd6wr"]
 
 [ext_resource type="Texture2D" uid="uid://cait548bqcg30" path="res://Assets/Decrementor_level1.png" id="1_6jj8j"]
 [ext_resource type="Script" uid="uid://blff3bg4ahv26" path="res://Scripts/pause_menu.gd" id="1_q12u6"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://crpdkoaxmqg" path="res://Assets/hovered deck.png" id="5_rpty4"]
 [ext_resource type="Script" uid="uid://cn0evpoljb0p4" path="res://Scenes/CombatManager.gd" id="5_ysn8j"]
 [ext_resource type="Texture2D" uid="uid://1y7dcrepgjor" path="res://Assets/Images/Enemy4.png" id="7_rpty4"]
+[ext_resource type="Script" uid="uid://c3lbatqfug88o" path="res://Scenes/progress_bar.gd" id="8_06um6"]
 [ext_resource type="Script" uid="uid://bh1awqh1op11k" path="res://Scenes/h_slider.gd" id="9_6jj8j"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q12u6"]
@@ -334,12 +335,23 @@ step = 1.0
 value = 50.0
 rounded = true
 show_percentage = false
+script = ExtResource("8_06um6")
+
+[node name="Label" type="Label" parent="UI (CanvasLayer)/CombatManager (Node)/Enemy/ProgressBar"]
+layout_mode = 0
+offset_top = -2.0
+offset_right = 278.0
+offset_bottom = 52.0
+theme_override_fonts/font = ExtResource("2_joc8x")
+theme_override_font_sizes/font_size = 40
+text = "SCORE:"
+horizontal_alignment = 1
 
 [node name="Requirement" type="Label" parent="UI (CanvasLayer)/CombatManager (Node)/Enemy"]
-offset_left = 681.0
-offset_top = 111.0
-offset_right = 831.0
-offset_bottom = 137.0
+offset_left = 624.0
+offset_top = 114.0
+offset_right = 774.0
+offset_bottom = 140.0
 theme_override_colors/font_color = Color(0.36332086, 0.73621655, 0, 1)
 theme_override_fonts/font = ExtResource("2_joc8x")
 theme_override_font_sizes/font_size = 25
@@ -347,10 +359,10 @@ text = "(Requirements)"
 horizontal_alignment = 1
 
 [node name="StrongRequirement" type="Label" parent="UI (CanvasLayer)/CombatManager (Node)/Enemy"]
-offset_left = 440.0
-offset_top = 111.0
-offset_right = 656.0
-offset_bottom = 138.0
+offset_left = 376.0
+offset_top = 114.0
+offset_right = 592.0
+offset_bottom = 141.0
 theme_override_colors/font_color = Color(0.9750616, 0.5548863, 7.70092e-07, 1)
 theme_override_fonts/font = ExtResource("2_joc8x")
 theme_override_font_sizes/font_size = 25
