@@ -42,6 +42,7 @@ Draw.io: https://www.drawio.com/
 
 Google Drawings: https://docs.google.com/drawings
 
+Music: https://pixabay.com/music/beats-dance-queen-synth-pop-background-music-for-vlog-video-stories-short-2-427667/
 
 Placeholder video made by jawed on YouTube.
 
