@@ -47,7 +47,8 @@
                             <li><button class="btn btn-secondary tabButton dropdown-item" onclick="toggleTab(event, 'StateDiagram')">State Diagram</button></li>
                         </ul>
                     </div>
-                    <button class="btn fs-4 fw-bold tabButton" onclick="toggleTab(event, 'SRSv1')">SRS</button>
+                    <button class="btn fs-4 fw-bold tabButton" onclick="toggleTab(event, 'SRSv1')">SRSv1</button>
+                    <button class="btn fs-4 fw-bold tabButton" onclick="toggleTab(event, 'SRSv2')">SRSv2</button>
                     <button class="btn fs-4 fw-bold tabButton" onclick="toggleTab(event, 'Prototype')">Prototype</button>
                     <button class="btn fs-4 fw-bold tabButton" onclick="toggleTab(event, 'DemoVideo')">Demo Video</button>
                     <button class="btn fs-4 fw-bold tabButton" onclick="toggleTab(event, 'PresentationSlides')">Presentation Slides</button>
@@ -90,16 +91,16 @@
             <iframe src="pdfs/Requirements.pdf" class="content"></iframe>
         </div>
         <div id="UseCaseDiagram" class="tabContent d-none">
-            <img src="images/UseCaseDiagramRevised.png" class="content">
+            <img src="images/UseCaseDiagram.png" class="content">
         </div>
         <div id="ClassDiagram" class="tabContent d-none">
-            <img src="images/ClassDiagramRevised.png" class="content">
+            <img src="images/ClassDiagram.png" class="content">
         </div>
         <div id="SequenceDiagram1" class="tabContent d-none">
-            <img src="images/EndingTurnAndAttackEnemyRevised.png" class="content">
+            <img src="images/EndingTurnAndAttackEnemy.png" class="content">
         </div>
         <div id="SequenceDiagram2" class="tabContent d-none">
-            <img src="images/PlayerCardInteractionRevised.png" class="content">
+            <img src="images/PlayerCardInteraction.png" class="content">
         </div>
         <div id="StateDiagram" class="tabContent d-none">
             <img src="images/StateDiagram.png" class="content">
@@ -107,7 +108,17 @@
         <div id="SRSv1" class="tabContent container d-none">
             <iframe src="pdfs/SRSv1.pdf" class="content"></iframe>
         </div>
+        <div id="SRSv2" class="tabContent container d-none">
+            <iframe src="pdfs/SRSv2.pdf" class="content"></iframe>
+        </div>
         <div id="Prototype" class="tabContent container d-none">
+            <a href="decrementor.zip" download="decrementor" class="btn text-decoration-none text-dark fs-4 py-1 border px-2 rounded btn-info">
+                <span class="fs-5 text-primary me-3">Download</span>
+                <i class="bi bi-download"></i>
+            </a>
+            <p>Once downloaded, simply unzip and run the Decrementor.exe file inside
+                <br>
+            Or play on our website right below!</p>
             <iframe 
                 src="decrementor/Decrementor.html" 
                 width="1152px" 
@@ -163,6 +174,7 @@
 
             <h2 class="mt-4 mb-3">Internal resources:</h2>
             <p class="lead">Icon created by Nicholas Johnson in Google Drawings.</p>
+            <p class="lead">In game pixel art created by Nicholas Johnson and Pkyo Naing in Asperite</p>
             <p class="lead">Title background created by Nicholas Johnson in Asperite.</p>
             <p class="lead">Demo video recorded by Abhiram Garre in Camtasia.</p>
         </div>
